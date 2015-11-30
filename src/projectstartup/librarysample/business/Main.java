@@ -23,8 +23,8 @@ public class Main {
 		member.checkout(c, LocalDate.now(), LocalDate.now().plus(30, ChronoUnit.DAYS));
 		System.out.println("Location of 'user.dir':\n  "+DataAccessFacade.OUTPUT_DIR);
 		DataAccess da = new DataAccessFacade();
-		da.saveLibraryMember("John", member);
-		System.out.println("Reading record for John:\n"+"  "+da.readLibraryMember("John"));
+		///da.saveLibrary("John", member);
+		//System.out.println("Reading record for John:\n"+"  "+da.readLibraryMember("John"));
 		
 
 	}

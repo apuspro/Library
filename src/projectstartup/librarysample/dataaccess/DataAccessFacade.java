@@ -6,6 +6,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import projectstartup.librarysample.business.Library;
 import projectstartup.librarysample.business.LibraryMember;
 
 public class DataAccessFacade implements DataAccess {
@@ -31,11 +32,11 @@ public class DataAccessFacade implements DataAccess {
 	}
 	public Library readLibrary(String name) {
 		ObjectInputStream in = null;
-		LibraryMember member = null;
+		Library member = null;
 		try {
 			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, name);
 			in = new ObjectInputStream(Files.newInputStream(path));
-			member = (LibraryMember)in.readObject();
+			member = (Library)in.readObject();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
