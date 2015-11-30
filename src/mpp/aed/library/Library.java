@@ -1,5 +1,7 @@
 package mpp.aed.library;
 
-public class Library {
+import java.io.Serializable;
+
+public class Library implements Serializable{
 
 }
