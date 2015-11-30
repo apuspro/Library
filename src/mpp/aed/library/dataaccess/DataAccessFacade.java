@@ -1,4 +1,4 @@
-package projectstartup.librarysample.dataaccess;
+package mpp.aed.library.dataaccess;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -6,8 +6,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import projectstartup.librarysample.business.Library;
-import projectstartup.librarysample.business.LibraryMember;
+import mpp.aed.library.Library;
 
 public class DataAccessFacade implements DataAccess {
 	public static final String OUTPUT_DIR = System.getProperty("user.dir") 

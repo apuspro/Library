@@ -1,4 +1,4 @@
-package application;
+package mpp.aed.application;
 	
 import javafx.application.Application;
 import javafx.stage.Stage;

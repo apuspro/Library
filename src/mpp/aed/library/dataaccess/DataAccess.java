@@ -1,6 +1,6 @@
-package projectstartup.librarysample.dataaccess;
+package mpp.aed.library.dataaccess;
 
-import projectstartup.librarysample.business.Library;
+import mpp.aed.library.Library;
 
 public interface DataAccess {
 	public void saveLibrary(String name, Library library);
