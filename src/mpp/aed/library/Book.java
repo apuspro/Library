@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Book implements Serializable {
-    private static int copyNumber=1;
+    private int copyNumber=1;
     private String title;
     private int ISBN;
     private int maxCheckoutDays;
