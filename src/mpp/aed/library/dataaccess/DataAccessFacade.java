@@ -10,15 +10,15 @@ import mpp.aed.library.Library;
 
 public class DataAccessFacade implements DataAccess {
 	public static final String OUTPUT_DIR = System.getProperty("user.dir") 
-			+ "\\src\\projectstartup\\librarysample\\dataaccess\\storage";
+			+ "\\src\\mpp\\aed\\library\\dataaccess\\storage";
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
 	
-	public void saveLibrary(String name, Library member) {
+	public void saveLibrary(String name, Library library) {
 		ObjectOutputStream out = null;
 		try {
 			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, name);
 			out = new ObjectOutputStream(Files.newOutputStream(path));
-			out.writeObject(member);
+			out.writeObject(library);
 		} catch(IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -37,7 +37,7 @@ public class DataAccessFacade implements DataAccess {
 			in = new ObjectInputStream(Files.newInputStream(path));
 			member = (Library)in.readObject();
 		} catch(Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace(); Not necessary
 		} finally {
 			if(in != null) {
 				try {
