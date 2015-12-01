@@ -47,7 +47,7 @@ public final class Book implements Serializable {
         this.maxCheckoutDays = maxCheckoutDays;
     }
 
-    public CopyBook getCopeBook() {
+    public CopyBook getCopyBook() {
         return getAvailableCopy();
     }
 
