@@ -38,6 +38,7 @@ public class LoginController {
 		if (sController.login(username, password)) {
 			//TODO Call the next Window
 			resultMsg.setText("Login Successfully!");
+			sController.setCurrentUser(sController.getUser(username));
 			openMenu();
 		} else {
 			resultMsg.setText("Login Failed");

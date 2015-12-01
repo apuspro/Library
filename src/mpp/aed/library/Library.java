@@ -46,7 +46,7 @@ public class Library implements Serializable {
         return name;
     }
 
-    private User getUser(String username) {
+    public User getUser(String username) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 return user;

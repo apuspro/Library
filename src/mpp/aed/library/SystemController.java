@@ -20,6 +20,10 @@ public class SystemController {
     	return instance;
     }
 
+    public User getUser(String username){
+    	return this.library.getUser(username);
+    }
+    
     public boolean login(String username, String password) {
         return this.library.login(username, password);
     }
