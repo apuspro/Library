@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -78,13 +79,13 @@ public class MenuController {
         @FXML
     public void openCheckoutBook() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("../view/BookView.fxml"));
-        BorderPane page;
+        loader.setLocation(Main.class.getResource("../view/CheckoutBook.fxml"));
+        AnchorPane page;
         try {
-            page = (BorderPane) loader.load();
+            page = (AnchorPane) loader.load();
 
             Stage checkoutBookStage = new Stage();
-            checkoutBookStage.setTitle("Book View");
+            checkoutBookStage.setTitle("CheckoutBook View");
             checkoutBookStage.initModality(Modality.WINDOW_MODAL);
             checkoutBookStage.initOwner(this.menuStage);
             Scene scene = new Scene(page);
