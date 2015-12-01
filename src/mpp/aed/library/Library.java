@@ -14,9 +14,13 @@ public class Library implements Serializable{
 	private String name;
 	private List<User> users;
 	
+	private List<Member> members;
+	
 	public Library(String name){
 		this.name = name;
 		this.users = new ArrayList<>();
+		
+		this.members = new ArrayList<>();
 	}
 	
 	public boolean addUser(User user){
@@ -40,5 +44,13 @@ public class Library implements Serializable{
 			return true;
 		}
 		return false;
+	}
+	
+	public void addMember( Member  newMember ) throws LibraryException{
+		for (Member member : members) {
+			if(newMember.equals(member))
+				throw new LibraryException("Already exists a member with member id : " + newMember.getMemberId());
+		}
+		this.members.add(newMember);
 	}
 }
