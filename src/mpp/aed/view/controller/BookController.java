@@ -10,6 +10,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import mpp.aed.application.Main;
 import mpp.aed.library.Book;
+import mpp.aed.library.SystemController;
 
 public class BookController {
 
@@ -22,10 +23,12 @@ public class BookController {
 	@FXML
 	private int numberOfCopies;
 	
-	private Book book;
+	private Book newBook;
 	
 	public void saveBook(){
-		book = new Book(this.title, this.ISBN, this.maxChecoutLength);
+		SystemController sController =  SystemController.getInstance();
+		newBook = new Book(this.title, this.ISBN, this.maxChecoutLength);
+		sController.getLibrary().addBook(newBook);
 	}
 	
 	@FXML
