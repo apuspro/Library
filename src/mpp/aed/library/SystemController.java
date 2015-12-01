@@ -60,4 +60,9 @@ public class SystemController {
         this.library.addMember(newMember);
         this.serialize(this.library);
     }
+    
+    public void addCopyToBook(Book book){
+    	if(book.addCopyBook())
+    		this.serialize(library);
+    }
 }

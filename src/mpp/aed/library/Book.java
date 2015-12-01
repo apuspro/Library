@@ -79,5 +79,9 @@ public final class Book implements Serializable {
         }
         
         return null;
-    }    
+    }
+    
+    public int getNumberOfCopies(){
+    	return this.copies.size();
+    }
 }
