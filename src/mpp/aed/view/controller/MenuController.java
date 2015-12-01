@@ -47,7 +47,7 @@ public class MenuController {
 			page = (BorderPane) loader.load();
 		
 			Stage aboutStage = new Stage();
-			aboutStage.setTitle("About");
+			aboutStage.setTitle("Book View");
 			aboutStage.initModality(Modality.WINDOW_MODAL);
 			aboutStage.initOwner(this.menuStage);
 			Scene scene = new Scene(page);
