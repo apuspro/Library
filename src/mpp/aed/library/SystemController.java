@@ -5,14 +5,19 @@ import mpp.aed.library.dataaccess.DataAccessFacade;
 public class SystemController {
 
     private Library library;
+    private User currentUser;
+    
+    private static SystemController instance = new SystemController();
 
     public SystemController() {
         //First we are going to try to deserialize the Library
         this.library = Library.getInstance();
-        User defaultUser = new SuperUser("admin", "admin2246");
-        this.library.addUser(defaultUser);
         //serialize to create the first object for the project
         serialize(this.library);
+    }
+    
+    public static SystemController getInstance(){
+    	return instance;
     }
 
     public boolean login(String username, String password) {
@@ -66,4 +71,18 @@ public class SystemController {
     	if(book.addCopyBook())
     		this.serialize(library);
     }
+
+	/**
+	 * @return the currentUser
+	 */
+	public User getCurrentUser() {
+		return currentUser;
+	}
+
+	/**
+	 * @param currentUser the currentUser to set
+	 */
+	public void setCurrentUser(User currentUser) {
+		this.currentUser = currentUser;
+	}
 }

@@ -19,7 +19,13 @@ public class Library implements Serializable {
     public synchronized static Library getInstance() {
         if( instance == null ) {
             Library aLibrary = new DataAccessFacade().readLibrary("library");
-            instance = aLibrary!=null?aLibrary:new Library("Little Library");
+            if(aLibrary!=null) {
+            	instance = aLibrary;
+            } else {
+            	instance = new Library("Little Library");
+            	User defaultUser = new SuperUser("admin", "admin2246");
+            	instance.addUser(defaultUser);
+            }
         }
         
         return instance;

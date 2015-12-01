@@ -20,16 +20,13 @@ public class LoginController {
 
 	@FXML
 	private TextField usernameField;
-
 	@FXML
 	private PasswordField passwordField;
-
 	@FXML
 	private Text resultMsg;
-	
-   @FXML
+	@FXML
     protected void initialize(){
-		sController =  new SystemController();
+		sController =  SystemController.getInstance();
     }
 
 	@FXML
