@@ -2,6 +2,8 @@ package mpp.aed.library;
 
 public class SuperUser extends User {
 
+        private final Librarian librarian;
+        private final Administrator administrator;
 	/**
 	 * 
 	 */
@@ -9,6 +11,15 @@ public class SuperUser extends User {
 
 	public SuperUser(String username, String password) {
 		super(username, password);
+                librarian = new Librarian(username, password);
+                administrator = new Administrator(username, password);
 	}
 
+    public Librarian getLibrarian() {
+        return librarian;
+    }
+
+    public Administrator getAdministrator() {
+        return administrator;
+    }       
 }
