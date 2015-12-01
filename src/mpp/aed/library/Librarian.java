@@ -1,5 +1,7 @@
 package mpp.aed.library;
 
+import java.util.List;
+
 public class Librarian extends User{
 
 	/**
@@ -10,5 +12,11 @@ public class Librarian extends User{
 	public Librarian(String username, String password) {
 		super(username, password);
 	}
+        
+        public List<Book> getCheckedoutBooks(int memberId) {
+            return null;
+        }
+        
+        
 
 }
