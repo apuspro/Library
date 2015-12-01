@@ -1,14 +1,13 @@
 package mpp.aed.library;
 
-public class Administrator extends User{
+public class Administrator extends User {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4572691115977442776L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 4572691115977442776L;
 
-	public Administrator(String username, String password) {
-		super(username, password);
-	}
-
+    public Administrator(String username, String password) {
+        super(username, password);
+    }
 }
