@@ -47,10 +47,20 @@ public class Library implements Serializable{
 	}
 	
 	public void addMember( Member  newMember ) throws LibraryException{
-		for (Member member : members) {
-			if(newMember.equals(member))
-				throw new LibraryException("Already exists a member with member id : " + newMember.getMemberId());
-		}
-		this.members.add(newMember);
+            if( members.contains(newMember) ) {
+                throw new LibraryException("Already exists a member with member id : " + newMember.getMemberId());
+            }
+            
+            this.members.add(newMember);
 	}
+        
+        public boolean isMemberExists(int memberId) {
+            for( Member member : members ) {
+                if( member.getMemberId() == memberId ) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
 }
