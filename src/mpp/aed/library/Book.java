@@ -67,6 +67,7 @@ public final class Book implements Serializable {
         return false;
     }
 
+    
     public boolean addCopyBook() {
         return this.copies.add(new CopyBook(this, copyNumber++));
     }
