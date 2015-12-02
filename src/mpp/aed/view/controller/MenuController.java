@@ -180,4 +180,30 @@ public class MenuController {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+	public void openUserView(){
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../view/UserView.fxml"));
+		AnchorPane page;
+		try {
+			page = (AnchorPane) loader.load();
+		
+			Stage userStage = new Stage();
+			userStage.setTitle("User View");
+			userStage.initModality(Modality.WINDOW_MODAL);
+			userStage.initOwner(this.menuStage);
+			Scene scene = new Scene(page);
+			userStage.setScene(scene);
+			
+			UserController controller = loader.getController();
+			controller.setUserStage(userStage);
+	
+			// Show the dialog and wait until the user closes it
+			userStage.showAndWait();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

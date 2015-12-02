@@ -23,4 +23,14 @@ public abstract class User implements Serializable{
 	public String getPassword() {
 		return password;
 	}
+	
+	@Override
+	public boolean equals(Object object){
+		if(object != null){
+			if(((User)object).username.equals(this.username)){
+				return true;
+			}
+		}
+		return false;
+	}
 }
