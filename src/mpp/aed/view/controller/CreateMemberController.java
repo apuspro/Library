@@ -45,8 +45,18 @@ public class CreateMemberController {
 	public void handleCreateBtn() {
 		try {
 			this.messageField.setText("");
-			if(this.validateFields())
+			if(this.validateFields()){
 				this.sysController.createMember(Integer.parseInt(memberIdField.getText()), firstNameField.getText(), lastNameField.getText(), streetField.getText(), cityField.getText(), stateField.getText(), zipField.getText(), Integer.parseInt(phoneNumberField.getText()));
+				this.messageField.setText("Member created succesfully");
+				this.memberIdField.setText("");
+				this.firstNameField.setText("");
+				this.lastNameField.setText("");
+				this.streetField.setText("");
+				this.stateField.setText("");
+				this.cityField.setText("");
+				this.zipField.setText("");
+				this.phoneNumberField.setText("");
+			}
 		} catch (LibraryException e) {
 			this.messageField.setText(e.getMessage());
 		}
