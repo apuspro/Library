@@ -9,18 +9,19 @@ final public class UserRuleSet implements RuleSet {
 	UserRuleSet() {}
 	@Override
 	public void applyRules(Object ob) throws RuleException {
-		UserController login = (UserController)ob;
+		UserController userC = (UserController)ob;
 		
-		usernameRule(login);
-		existRule(login);
-		passwordRule(login);
+		usernameRule(userC);
+		existRule(userC);
+		passwordRule(userC);
+		typeRule(userC);
 		
 	}
 	
-	private void usernameRule(UserController login) throws RuleException {
-		String username = login.getUsernameField().getText();
+	private void usernameRule(UserController userC) throws RuleException {
+		String username = userC.getUsernameField().getText();
 		if(username == null || username.equals("")){
-			throw new RuleException("ID must be non empty");
+			throw new RuleException("Username must be non empty");
 		}else{
 			if(username.length()<5){
 				throw new RuleException("Username should have at least 5 characters");
@@ -28,8 +29,8 @@ final public class UserRuleSet implements RuleSet {
 		}
 	}
 	
-	private void existRule(UserController login) throws RuleException {
-		String username = login.getUsernameField().getText();
+	private void existRule(UserController userC) throws RuleException {
+		String username = userC.getUsernameField().getText();
 		for (User user : SystemController.getInstance().getLibrary().getUsers()) {
 			if(user.getUsername().equals(username)){
 				throw new RuleException("Username already exists");
@@ -37,8 +38,8 @@ final public class UserRuleSet implements RuleSet {
 		}
 	}
 	
-	private void passwordRule(UserController login) throws RuleException {
-		String password = login.getPasswordField().getText();
+	private void passwordRule(UserController userC) throws RuleException {
+		String password = userC.getPasswordField().getText();
 		if(password == null || password.equals("")){
 			throw new RuleException("Password must be non empty");
 		}else{
@@ -48,4 +49,10 @@ final public class UserRuleSet implements RuleSet {
 		}
 	}
 
+	private void typeRule(UserController userC) throws RuleException {
+		String combo = userC.getComboBox().getValue();
+		if(combo == null || combo.contains("Select")){
+			throw new RuleException("Choose the type of user");
+		}
+	}
 }

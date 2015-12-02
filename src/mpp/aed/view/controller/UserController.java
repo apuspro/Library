@@ -86,5 +86,9 @@ public class UserController {
 	public PasswordField getPasswordField() {
 		return passwordField;
 	}
+
+	public ComboBox<String> getComboBox() {
+		return comboBox;
+	}
 	
 }
