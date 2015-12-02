@@ -11,7 +11,7 @@ public class Member implements Serializable {
 	private String state;
 	private String zip;
 	private int phoneNumber;
-	private CheckOutRecord checkOutRecord;
+	private CheckOutRecord checkOutRecord = new CheckOutRecord();
 	
 	public Member(int memberId, String firstName, String lastName, String street, String city, String state, String zip,
 			int phoneNumber) {
@@ -63,5 +63,11 @@ public class Member implements Serializable {
 
 	public int getPhoneNumber() {
 		return phoneNumber;
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		Member member = (Member)obj;
+		return member.memberId == this.memberId;
 	}
 }
