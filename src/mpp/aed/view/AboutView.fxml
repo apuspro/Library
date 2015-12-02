@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="252.0" prefWidth="342.0" stylesheets="@../application/DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="252.0" prefWidth="342.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Label prefHeight="222.0" prefWidth="255.0" text="Library 1.0&#10;&#10;This is a desktop app developed for the first project of the course MPP&#10;&#10;Maharishi University of Management&#10;&#10;Andres Felipe Loaiza&#10;Ehudes Garcia Gil&#10;Dislshod Shaymanov" textAlignment="JUSTIFY" wrapText="true" BorderPane.alignment="CENTER" />
    </center>

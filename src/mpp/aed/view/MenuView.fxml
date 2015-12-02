@@ -40,8 +40,4 @@
          </image>
       </ImageView>
    </left>
-   <stylesheets>
-      <URL value="@../application/DarkTheme.css" />
-      <URL value="@../application/application.css" />
-   </stylesheets>
 </BorderPane>
