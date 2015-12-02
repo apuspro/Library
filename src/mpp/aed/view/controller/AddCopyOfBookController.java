@@ -6,7 +6,6 @@ public class AddCopyOfBookController {
 
 	private String isbnField;
 	
-	
 	private String titleField;
 	
 	private String numberOfCopies;
@@ -20,7 +19,6 @@ public class AddCopyOfBookController {
 	public AddCopyOfBookController(SystemController sysController) {
 		this.sysController = sysController;
 	}
-	
 	
 	public void handleGetBookBtn() {
 		book = this.sysController.getLibrary().getBookByISBN(Integer.parseInt(this.isbnField));

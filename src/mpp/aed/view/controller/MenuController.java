@@ -5,16 +5,44 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import mpp.aed.application.Main;
+import mpp.aed.library.Administrator;
+import mpp.aed.library.Librarian;
+import mpp.aed.library.SuperUser;
+import mpp.aed.library.SystemController;
 
 public class MenuController {
+	
+	@FXML
+	private MenuItem addBookMI;
+	@FXML
+	private MenuItem chkOutBookMI;
 
 	private Stage primaryStage;
 	private Stage menuStage;
+	
+	@FXML
+    protected void initialize(){
+		SystemController sController = SystemController.getInstance();
+		if(sController.getCurrentUser() instanceof Administrator || 
+				sController.getCurrentUser() instanceof SuperUser){
+			addBookMI.setVisible(true);
+		}else{
+			addBookMI.setVisible(false);
+		}
+		
+		if(sController.getCurrentUser() instanceof Librarian || 
+				sController.getCurrentUser() instanceof SuperUser){
+			chkOutBookMI.setVisible(true);
+		}else{
+			chkOutBookMI.setVisible(false);
+		}
+    }
 	
 	@FXML
 	public void openAbout(){
@@ -43,19 +71,22 @@ public class MenuController {
 	public void openAddBook(){
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("../view/BookView.fxml"));
-		BorderPane page;
+		AnchorPane page;
 		try {
-			page = (BorderPane) loader.load();
+			page = (AnchorPane) loader.load();
 		
-			Stage aboutStage = new Stage();
-			aboutStage.setTitle("Book View");
-			aboutStage.initModality(Modality.WINDOW_MODAL);
-			aboutStage.initOwner(this.menuStage);
+			Stage bookStage = new Stage();
+			bookStage.setTitle("Book View");
+			bookStage.initModality(Modality.WINDOW_MODAL);
+			bookStage.initOwner(this.menuStage);
 			Scene scene = new Scene(page);
-			aboutStage.setScene(scene);
+			bookStage.setScene(scene);
+			
+			BookController controller = loader.getController();
+			controller.setBookStage(bookStage);
 	
 			// Show the dialog and wait until the user closes it
-			aboutStage.showAndWait();
+			bookStage.showAndWait();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -98,4 +129,8 @@ public class MenuController {
             e.printStackTrace();
         }
     }
+
+		public void setMenuStage(Stage menuStage) {
+			this.menuStage = menuStage;
+		}
 }

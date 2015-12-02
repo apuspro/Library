@@ -5,7 +5,8 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import mpp.aed.application.Main;
@@ -15,35 +16,46 @@ import mpp.aed.library.SystemController;
 public class BookController {
 
 	@FXML
-	private int ISBN;
+	private TextField ISBN;
 	@FXML
-	private String title;
+	private TextField title;
 	@FXML
-	private int maxChecoutLength;
+	private TextField maxChecoutLength;
 	@FXML
-	private int numberOfCopies;
+	private TextField numberOfCopies;
 	
-	private Book newBook;
+	private Book newBook = new Book();
+	
+	private Stage bookStage;
 	
 	public void saveBook(){
 		SystemController sController =  SystemController.getInstance();
-		newBook = new Book(this.title, this.ISBN, this.maxChecoutLength);
+		this.newBook.setTitle(this.title.getText());
+		this.newBook.setISBN(Integer.parseInt(this.ISBN.getText()));
+		this.newBook.setMaxCheckoutDays(Integer.parseInt(this.maxChecoutLength.getText()));
+		for (int i = 0; i < Integer.parseInt(numberOfCopies.getText())-1; i++) {
+			newBook.addCopyBook();
+		}
+		
 		sController.getLibrary().addBook(newBook);
+		sController.serialize(sController.getLibrary());
 	}
 	
 	@FXML
 	public void openAuthorView(){
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("../view/AuthorView.fxml"));
-		BorderPane page;
+		AnchorPane page;
 		try {
-			page = (BorderPane) loader.load();
+			page = (AnchorPane) loader.load();
 			Stage authorStage = new Stage();
-			authorStage.setTitle("Library Menu");
+			authorStage.setTitle("Author Edit");
 			authorStage.initModality(Modality.WINDOW_MODAL);
-			//authorStage.initOwner(this.); TODO
-			
-			//AuthorController controller = loader.getController();
+			authorStage.initOwner(this.bookStage);			
+			AuthorController controller = loader.getController();
+			controller.setBook(this.newBook);
+			controller.setData();
+			controller.setAuthorStage(authorStage);
 			
 			Scene scene = new Scene(page);
 			authorStage.setScene(scene);
@@ -54,5 +66,14 @@ public class BookController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	public void cancelBtn(){
+		this.bookStage.hide();
+	}
+
+	public void setBookStage(Stage bookStage) {
+		this.bookStage = bookStage;
 	}
 }

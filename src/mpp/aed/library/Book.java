@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Book implements Serializable {
-    private int copyNumber=1;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1102079640455412470L;
+	private int copyNumber=1;
     private String title;
     private int ISBN;
     private int maxCheckoutDays;
@@ -85,4 +89,8 @@ public final class Book implements Serializable {
     public int getNumberOfCopies(){
     	return this.copies.size();
     }
+
+	public List<Author> getAuthors() {
+		return authors;
+	}
 }
