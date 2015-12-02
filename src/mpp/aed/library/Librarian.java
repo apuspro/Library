@@ -1,5 +1,6 @@
 package mpp.aed.library;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Librarian extends User {
@@ -33,8 +34,15 @@ public class Librarian extends User {
         if( copyBook == null ) {
             return false;
         }
+        copyBook.setAvailable(false);
         
+        Entry entry = new Entry();
+        entry.setCheckoutDate(LocalDate.now());
+        entry.setDueDate(LocalDate.now().plusDays(book.getMaxCheckoutDays()));
+        entry.setCopyBook(copyBook);
         CheckOutRecord cor = member.getCheckOutRecord();
+        cor.addEntry(entry);
+        System.out.println("The book checked out!!!");        
         
         return true;
     }
