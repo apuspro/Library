@@ -68,7 +68,7 @@ public class AuthorController {
 			this.book.addAuthor(aAuthor);
 			
 			this.authorData.add(aAuthor);
-			resultMsg.setText("Author Added");
+			resultMsg.setText("Author "+this.firstNameField.getText()+" Added");
 		}catch(RuleException e) {
 			resultMsg.setText(e.getMessage());
 		}

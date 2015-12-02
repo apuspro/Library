@@ -73,6 +73,8 @@ public class LoginController {
 			
 			Scene scene = new Scene(page);
 			menuStage.setScene(scene);
+			menuStage.setResizable(false);
+			menuStage.sizeToScene();
 			
 			menuStage.setOnHiding(new EventHandler<WindowEvent>() {
 

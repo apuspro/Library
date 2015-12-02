@@ -64,7 +64,7 @@ public class UserController {
 			Library aLibrary = SystemController.getInstance().getLibrary();
 			aLibrary.addUser(newUser);
 			SystemController.getInstance().serialize(aLibrary);
-			resultMsg.setText("User created");
+			resultMsg.setText("User "+usernameField+" created");
 		}catch(RuleException e) {
 			resultMsg.setText(e.getMessage());
 		}

@@ -223,4 +223,10 @@ public class MenuController {
 			e.printStackTrace();
 		}
 	}
+    
+    @FXML
+	public void closeBtn(){
+    	System.out.println("Application Closed by close Menu Item!");
+        System.exit(0);
+	}
 }
