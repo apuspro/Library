@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -7,8 +8,10 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.CreateMemberController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="90.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="271.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="197.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="56.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="10.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
@@ -31,7 +34,7 @@
       <Label text="State:" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
       <Label text="Zip:" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
       <Label text="Phone Number:" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
-      <TextField fx:id="memberIdField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="memberIdField" prefHeight="25.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <TextField fx:id="streetField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -39,7 +42,17 @@
       <TextField fx:id="stateField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <TextField fx:id="zipField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <TextField fx:id="phoneNumberField" onAction="#handleCreateBtn" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-      <Button mnemonicParsing="false" onAction="#handleCreateBtn" text="Create Member" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <Label fx:id="messageField" prefHeight="17.0" prefWidth="363.0" GridPane.columnSpan="2" />
+      <Button mnemonicParsing="false" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+         <children>
+            <Button mnemonicParsing="false" onAction="#handleCreateBtn" text="Save" />
+            <Button mnemonicParsing="false" text="Cancel">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </GridPane>

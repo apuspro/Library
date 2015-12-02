@@ -25,16 +25,21 @@ public class AddCopyOfBookController {
 	}
 	
 	public void handleGetBookBtn() {
-		book = this.sysController.getLibrary().getBookByISBN(Integer.parseInt(this.isbnField.getText()));
-		if(book != null){
-			this.titleField.setText(book.getTitle());
-			this.numberOfCopies.setText(""+book.getNumberOfCopies());
-			this.messageField.setText("");;
-		}
-		else{
-			this.titleField.setText("");
-			this.numberOfCopies.setText("");
-			this.messageField.setText("No exists a Book with ISBN " + this.isbnField);
+		try {
+			RuleSetFactory.getRuleSet(this).applyRules(this);
+			book = this.sysController.getLibrary().getBookByISBN(Integer.parseInt(this.isbnField.getText()));
+			if(book != null){
+				this.titleField.setText(book.getTitle());
+				this.numberOfCopies.setText(""+book.getNumberOfCopies());
+				this.messageField.setText("");;
+			}
+			else{
+				this.titleField.setText("");
+				this.numberOfCopies.setText("");
+				this.messageField.setText("No exists a Book with ISBN " + this.isbnField);
+			}
+		} catch (RuleException e) {
+			this.messageField.setText(e.getMessage());
 		}
 	}
 	

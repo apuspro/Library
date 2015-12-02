@@ -1,7 +1,6 @@
 package mpp.aed.view.rulsets;
 
 import mpp.aed.view.controller.AddCopyOfBookController;
-import mpp.aed.view.controller.BookController;
 
 final public class AddCopyOfBookRuleSet implements RuleSet {
 
