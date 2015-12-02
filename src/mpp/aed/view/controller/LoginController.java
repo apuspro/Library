@@ -72,6 +72,7 @@ public class LoginController {
 			MenuController controller = loader.getController();
 			
 			Scene scene = new Scene(page);
+			scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
 			menuStage.setScene(scene);
 			menuStage.setResizable(false);
 			menuStage.sizeToScene();

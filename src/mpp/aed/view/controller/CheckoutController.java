@@ -65,6 +65,7 @@ public class CheckoutController {
             controller.initData(Integer.parseInt(memberIdField.getText())); 
             controller.setSelfStage(checkoutBookStage);
             Scene scene = new Scene(page);
+            scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
             checkoutBookStage.setScene(scene);
             // Show the dialog and wait until the user closes it
             checkoutBookStage.showAndWait();

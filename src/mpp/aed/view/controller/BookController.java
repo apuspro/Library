@@ -74,6 +74,7 @@ public class BookController {
 			controller.setAuthorStage(authorStage);
 			
 			Scene scene = new Scene(page);
+			scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
 			authorStage.setScene(scene);
 			
 			authorStage.showAndWait();

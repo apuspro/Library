@@ -18,6 +18,7 @@ public class Main extends Application {
 			LoginController controller = (LoginController)loader.getController();
 			//Parent root = FXMLLoader.load(getClass().getResource("../view/Login.fxml"));
 			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("DarkTheme.css").toExternalForm());
 			primaryStage.setTitle("Login Page");
 			primaryStage.setScene(scene);
 			controller.setPrimaryStage(primaryStage);

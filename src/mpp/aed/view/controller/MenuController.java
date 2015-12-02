@@ -74,6 +74,7 @@ public class MenuController {
 			aboutStage.initModality(Modality.WINDOW_MODAL);
 			aboutStage.initOwner(this.menuStage);
 			Scene scene = new Scene(page);
+			scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
 			aboutStage.setScene(scene);
 	
 			// Show the dialog and wait until the user closes it
@@ -97,6 +98,7 @@ public class MenuController {
 			bookStage.initModality(Modality.WINDOW_MODAL);
 			bookStage.initOwner(this.menuStage);
 			Scene scene = new Scene(page);
+			scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
 			bookStage.setScene(scene);
 			
 			BookController controller = loader.getController();
@@ -137,6 +139,7 @@ public class MenuController {
             checkoutBookStage.initModality(Modality.WINDOW_MODAL);
             checkoutBookStage.initOwner(this.menuStage);
             Scene scene = new Scene(page);
+            scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
             checkoutBookStage.setScene(scene);
 
             // Show the dialog and wait until the user closes it
@@ -161,6 +164,7 @@ public class MenuController {
             MemberController controller = loader.getController();
             controller.setParentStage(enterMemberIdStagee);
             Scene scene = new Scene(page);
+            scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
             enterMemberIdStagee.setScene(scene);
 
             // Show the dialog and wait until the user closes it
@@ -188,6 +192,7 @@ public class MenuController {
             checkoutBookStage.initModality(Modality.WINDOW_MODAL);
             checkoutBookStage.initOwner(this.menuStage);
             Scene scene = new Scene(page);
+            scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
             checkoutBookStage.setScene(scene);
 
             // Show the dialog and wait until the user closes it
@@ -211,6 +216,7 @@ public class MenuController {
 			userStage.initModality(Modality.WINDOW_MODAL);
 			userStage.initOwner(this.menuStage);
 			Scene scene = new Scene(page);
+			scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
 			userStage.setScene(scene);
 			
 			UserController controller = loader.getController();
