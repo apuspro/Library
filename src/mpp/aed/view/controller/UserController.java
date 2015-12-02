@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import mpp.aed.library.Administrator;
 import mpp.aed.library.Librarian;
@@ -21,6 +22,8 @@ public class UserController {
 	private PasswordField passwordField;
 	@FXML
 	private ComboBox<String> comboBox;
+	@FXML
+	private Text resultMsg;
 	
 	private Stage userStage;
 	
@@ -60,8 +63,13 @@ public class UserController {
 	public void setUserStage(Stage userStage) {
 		this.userStage = userStage;
 	}
-	
-	
-	
+
+	public TextField getUsernameField() {
+		return usernameField;
+	}
+
+	public PasswordField getPasswordField() {
+		return passwordField;
+	}
 	
 }

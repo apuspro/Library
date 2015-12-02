@@ -102,4 +102,8 @@ public class Library implements Serializable {
     public List<Book> getBooks() {
         return this.books;
     }
+
+	public List<User> getUsers() {
+		return users;
+	}
 }
