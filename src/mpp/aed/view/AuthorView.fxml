@@ -57,12 +57,12 @@
                               <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                            </GridPane.margin>
                         </Label>
-                        <TextField fx:id="firstName" GridPane.columnIndex="1" />
-                        <TextField fx:id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="address" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="phoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="credentials" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextArea fx:id="bio" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="firstNameField" GridPane.columnIndex="1" />
+                        <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="phoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="credentialsField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextArea fx:id="bioArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <Button mnemonicParsing="false" onAction="#cancelBtn" text="Back" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
                            <GridPane.margin>
                               <Insets right="20.0" />

@@ -35,14 +35,6 @@ final public class UserRuleSet implements RuleSet {
 				throw new RuleException("Username already exists");
 			}
 		}
-		
-		if(username == null || username.equals("")){
-			throw new RuleException("ID must be non empty");
-		}else{
-			if(username.length()<5){
-				throw new RuleException("Username should have at least 5 characters");
-			}
-		}
 	}
 	
 	private void passwordRule(UserController login) throws RuleException {

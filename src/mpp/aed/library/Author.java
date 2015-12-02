@@ -11,11 +11,16 @@ public class Author implements Serializable{
 	private String firstName;
 	private String lastName;
 	private String address;
-	private int phoneNumber;
+	private long phoneNumber;
 	private String credentials;
 	private String bio;
 	
-	public Author(String firstName, String lastName, String address, int phoneNumber, String credentials, String bio) {
+	public Author(String firstName, String lastName){
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
+	public Author(String firstName, String lastName, String address, long phoneNumber, String credentials, String bio) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -36,7 +41,7 @@ public class Author implements Serializable{
 		return address;
 	}
 
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
 

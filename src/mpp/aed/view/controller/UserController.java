@@ -10,9 +10,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import mpp.aed.library.Administrator;
 import mpp.aed.library.Librarian;
+import mpp.aed.library.Library;
 import mpp.aed.library.SuperUser;
 import mpp.aed.library.SystemController;
 import mpp.aed.library.User;
+import mpp.aed.view.rulsets.RuleException;
+import mpp.aed.view.rulsets.RuleSet;
+import mpp.aed.view.rulsets.RuleSetFactory;
 
 public class UserController {
 
@@ -42,17 +46,28 @@ public class UserController {
     }
 	
 	@FXML
-	public boolean addUser(){
-		User newUser;
-		if(comboBox.getValue().equals("Administrator")){
-			newUser = new Administrator(usernameField.getText(), passwordField.getText());
-		}else if(comboBox.getValue().equals("Librarian")){
-			newUser = new Librarian(usernameField.getText(), passwordField.getText());
-		}else{
-			newUser = new SuperUser(usernameField.getText(), passwordField.getText());
-		}
+	public void addUser(){
 		
-		return SystemController.getInstance().getLibrary().addUser(newUser);
+		RuleSet userRules = RuleSetFactory.getRuleSet(this);
+		try{
+			userRules.applyRules(this);
+			
+			User newUser;
+			if(comboBox.getValue().equals("Administrator")){
+				newUser = new Administrator(usernameField.getText(), passwordField.getText());
+			}else if(comboBox.getValue().equals("Librarian")){
+				newUser = new Librarian(usernameField.getText(), passwordField.getText());
+			}else{
+				newUser = new SuperUser(usernameField.getText(), passwordField.getText());
+			}
+			
+			Library aLibrary = SystemController.getInstance().getLibrary();
+			aLibrary.addUser(newUser);
+			SystemController.getInstance().serialize(aLibrary);
+			resultMsg.setText("User created");
+		}catch(RuleException e) {
+			resultMsg.setText(e.getMessage());
+		}
 	}
 	
 	@FXML

@@ -7,38 +7,54 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import mpp.aed.application.Main;
 import mpp.aed.library.Book;
 import mpp.aed.library.SystemController;
+import mpp.aed.view.rulsets.RuleException;
+import mpp.aed.view.rulsets.RuleSet;
+import mpp.aed.view.rulsets.RuleSetFactory;
 
 public class BookController {
 
 	@FXML
-	private TextField ISBN;
+	private TextField ISBNField;
 	@FXML
-	private TextField title;
+	private TextField titleField;
 	@FXML
-	private TextField maxChecoutLength;
+	private TextField maxChecOutLengthField;
 	@FXML
-	private TextField numberOfCopies;
+	private TextField numberOfCopiesField;
+	@FXML
+	private Text resultMsg;
 	
 	private Book newBook = new Book();
 	
 	private Stage bookStage;
 	
+	@FXML
 	public void saveBook(){
-		SystemController sController =  SystemController.getInstance();
-		this.newBook.setTitle(this.title.getText());
-		this.newBook.setISBN(Integer.parseInt(this.ISBN.getText()));
-		this.newBook.setMaxCheckoutDays(Integer.parseInt(this.maxChecoutLength.getText()));
-		for (int i = 0; i < Integer.parseInt(numberOfCopies.getText())-1; i++) {
-			newBook.addCopyBook();
+		RuleSet userRules = RuleSetFactory.getRuleSet(this);
+		try{
+			userRules.applyRules(this);
+			
+			SystemController sController =  SystemController.getInstance();
+			this.newBook.setTitle(this.titleField.getText());
+			this.newBook.setISBN(Integer.parseInt(this.ISBNField.getText()));
+			this.newBook.setMaxCheckoutDays(Integer.parseInt(this.maxChecOutLengthField.getText()));
+			for (int i = 0; i < Integer.parseInt(numberOfCopiesField.getText())-1; i++) {
+				newBook.addCopyBook();
+			}
+			
+			sController.getLibrary().addBook(newBook);
+			sController.serialize(sController.getLibrary());
+			
+			resultMsg.setText("Book created");
+		}catch(RuleException e) {
+			resultMsg.setText(e.getMessage());
 		}
-		System.out.println("Book added");
-		sController.getLibrary().addBook(newBook);
-		sController.serialize(sController.getLibrary());
 	}
 	
 	@FXML
@@ -75,5 +91,25 @@ public class BookController {
 
 	public void setBookStage(Stage bookStage) {
 		this.bookStage = bookStage;
+	}
+
+	public TextField getISBNField() {
+		return ISBNField;
+	}
+
+	public TextField getTitleField() {
+		return titleField;
+	}
+
+	public TextField getMaxChecOutLengthField() {
+		return maxChecOutLengthField;
+	}
+
+	public TextField getNumberOfCopiesField() {
+		return numberOfCopiesField;
+	}
+
+	public Book getNewBook() {
+		return newBook;
 	}
 }

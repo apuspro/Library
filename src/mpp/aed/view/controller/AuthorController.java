@@ -11,25 +11,29 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import mpp.aed.library.Author;
 import mpp.aed.library.Book;
+import mpp.aed.view.rulsets.RuleException;
+import mpp.aed.view.rulsets.RuleSet;
+import mpp.aed.view.rulsets.RuleSetFactory;
 
 public class AuthorController {
 
 	@FXML
-	private TextField firstName;
+	private TextField firstNameField;
 	@FXML
-	private TextField lastName;
+	private TextField lastNameField;
 	@FXML
-	private TextField address;
+	private TextField addressField;
 	@FXML
-	private TextField phoneNumber;
+	private TextField phoneNumberField;
 	@FXML
-	private TextField credentials;
+	private TextField credentialsField;
 	@FXML
-	private TextArea bio;
+	private TextArea bioArea;
 	
 	@FXML
 	private TableView<Author> authorTable;
@@ -39,6 +43,8 @@ public class AuthorController {
 	private TableColumn<Author, String> tAddressColumn;
 	@FXML
 	private TableColumn<Author, String> tPhoneColumn;
+	@FXML
+	private Text resultMsg;
 	
 	private Stage authorStage;
 	
@@ -54,11 +60,18 @@ public class AuthorController {
 	
 	@FXML
 	public void addAuthor(){
-		Author aAuthor = new Author(this.firstName.getText(), this.lastName.getText(), this.address.getText(),
-				Integer.parseInt(this.phoneNumber.getText()), this.credentials.getText(), this.bio.getText());
-		this.book.addAuthor(aAuthor);
-		
-		this.authorData.add(aAuthor);
+		RuleSet authorRules = RuleSetFactory.getRuleSet(this);
+		try{
+			authorRules.applyRules(this);
+			Author aAuthor = new Author(this.firstNameField.getText(), this.lastNameField.getText(), this.addressField.getText(),
+					Long.parseLong(this.phoneNumberField.getText()), this.credentialsField.getText(), this.bioArea.getText());
+			this.book.addAuthor(aAuthor);
+			
+			this.authorData.add(aAuthor);
+			resultMsg.setText("Author Added");
+		}catch(RuleException e) {
+			resultMsg.setText(e.getMessage());
+		}
 	}
 	
 	@FXML
@@ -108,5 +121,33 @@ public class AuthorController {
 				return prop;
 			}
 		});
+	}
+
+	public TextField getFirstNameField() {
+		return firstNameField;
+	}
+
+	public TextField getLastNameField() {
+		return lastNameField;
+	}
+
+	public TextField getAddressField() {
+		return addressField;
+	}
+
+	public TextField getPhoneNumberField() {
+		return phoneNumberField;
+	}
+
+	public TextField getCredentialsField() {
+		return credentialsField;
+	}
+
+	public TextArea getBioArea() {
+		return bioArea;
+	}
+
+	public Book getBook() {
+		return book;
 	}
 }
