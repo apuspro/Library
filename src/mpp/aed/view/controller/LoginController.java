@@ -15,6 +15,9 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import mpp.aed.application.Main;
 import mpp.aed.library.SystemController;
+import mpp.aed.view.rulsets.RuleException;
+import mpp.aed.view.rulsets.RuleSet;
+import mpp.aed.view.rulsets.RuleSetFactory;
 
 public class LoginController {
 	
@@ -35,17 +38,25 @@ public class LoginController {
 
 	@FXML
 	private void handleLoginBtn() {
+		
+		RuleSet loginRules = RuleSetFactory.getRuleSet(this);
 
-		String username = usernameField.getText();
-		String password = passwordField.getText();
-
-		if (sController.login(username, password)) {
-			//TODO Call the next Window
-			resultMsg.setText("Login Successfully!");
-			sController.setCurrentUser(sController.getUser(username));
-			openMenu();
-		} else {
-			resultMsg.setText("Login Failed");
+		try{
+			loginRules.applyRules(this);
+			
+			String username = usernameField.getText();
+			String password = passwordField.getText();
+	
+			if (sController.login(username, password)) {
+				//TODO Call the next Window
+				resultMsg.setText("Login Successfully!");
+				sController.setCurrentUser(sController.getUser(username));
+				openMenu();
+			} else {
+				resultMsg.setText("Login Failed");
+			}
+		}catch(RuleException e) {
+			resultMsg.setText(e.getMessage());
 		}
 	}
 	
@@ -102,6 +113,14 @@ public class LoginController {
 	 */
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
+	}
+
+	public TextField getUsernameField() {
+		return usernameField;
+	}
+
+	public PasswordField getPasswordField() {
+		return passwordField;
 	}
 
 }

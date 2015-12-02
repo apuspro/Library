@@ -30,7 +30,10 @@
             <Button mnemonicParsing="false" onAction="#handleLoginBtn" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Text fx:id="resultMsg" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="138.6708984375" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+            <Text fx:id="resultMsg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="216.6708984375" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
          </children>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
