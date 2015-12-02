@@ -52,6 +52,7 @@ public class BookController {
 			sController.serialize(sController.getLibrary());
 			
 			resultMsg.setText("Book "+this.titleField.getText()+" created");
+			System.out.println("Book "+this.titleField.getText()+" created");
 		}catch(RuleException e) {
 			resultMsg.setText(e.getMessage());
 		}
