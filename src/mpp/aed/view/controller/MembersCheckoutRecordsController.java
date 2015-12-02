@@ -33,17 +33,16 @@ import mpp.aed.library.Member;
  * @author 984966
  */
 public class MembersCheckoutRecordsController {
+    
     private Stage parentStage;
-
-       
+    
     private class Record {
         public String title;
         public String isbn;
         public LocalDate checkoutDate;
         public LocalDate dueDate;
     }
-    @FXML
-    private TextField memberIdField;
+    
     private ObservableList<Record> checkoutRecordsData = FXCollections.observableArrayList();
     
     @FXML
@@ -56,8 +55,13 @@ public class MembersCheckoutRecordsController {
     private TableColumn<Record, String> checkoutDateColumn;
     @FXML
     private TableColumn<Record, String> dueDateColumn;
-    
-    private void initColumn() {
+  
+    @FXML
+    protected void initialize() {
+        preJava8();
+    }
+
+    private void preJava8() {
         titleColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Record, String>, ObservableValue<String>>() {
 
 			@Override
@@ -93,41 +97,7 @@ public class MembersCheckoutRecordsController {
 				return prop;
 			}
 		});
-    }
-
-    @FXML
-    public void onViewCheckoutRecordsPerformed() {
-        System.out.println("processing checkout records..., member id: "+memberIdField.getText());
-        
-        this.parentStage.hide();
-        openMembersCheckoutRecords();
-    }
-    
-        @FXML
-    public void openMembersCheckoutRecords() {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("../view/MemberCheckoutRecords.fxml"));
-        AnchorPane page;
-        try {
-            page = (AnchorPane) loader.load();
-
-            Stage checkoutBookStage = new Stage();
-            checkoutBookStage.setTitle("Member's checkout records");
-            checkoutBookStage.initModality(Modality.WINDOW_MODAL);
-            checkoutBookStage.initOwner(parentStage);
-            MembersCheckoutRecordsController controller = loader.getController();
-            initData(Integer.parseInt(memberIdField.getText()));
-            controller.initColumn();          
-            Scene scene = new Scene(page);
-            checkoutBookStage.setScene(scene);
-
-            // Show the dialog and wait until the user closes it
-            checkoutBookStage.showAndWait();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
+    }  
     
     public void initData(int memberid) {
         Library library = Library.getInstance();
