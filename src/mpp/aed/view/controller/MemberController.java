@@ -62,4 +62,8 @@ public class MemberController {
     public void setParentStage(Stage parentStage) {
         this.parentStage = parentStage;
     }   
+
+    public TextField getMemberIdField() {
+        return memberIdField;
+    }  
 }
