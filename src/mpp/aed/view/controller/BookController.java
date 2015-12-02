@@ -36,7 +36,7 @@ public class BookController {
 		for (int i = 0; i < Integer.parseInt(numberOfCopies.getText())-1; i++) {
 			newBook.addCopyBook();
 		}
-		
+		System.out.println("Book added");
 		sController.getLibrary().addBook(newBook);
 		sController.serialize(sController.getLibrary());
 	}

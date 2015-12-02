@@ -143,6 +143,8 @@ public class MenuController {
             checkoutBookStage.setTitle("Member's checkout records");
             checkoutBookStage.initModality(Modality.WINDOW_MODAL);
             checkoutBookStage.initOwner(this.menuStage);
+            MembersCheckoutRecordsController controller = loader.getController();
+            
             Scene scene = new Scene(page);
             checkoutBookStage.setScene(scene);
 
