@@ -1,47 +1,49 @@
 package mpp.aed.view.controller;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import mpp.aed.library.*;
 
 public class AddCopyOfBookController {
 
-	private String isbnField;
+	private TextField isbnField;
 	
-	private String titleField;
+	private Label titleField;
 	
-	private String numberOfCopies;
+	private Label numberOfCopies;
 	
 	private SystemController sysController;
 	
-	private String messageField;
+	private Label messageField;
 	
 	private Book book;
 	
-	public AddCopyOfBookController(SystemController sysController) {
-		this.sysController = sysController;
+	public AddCopyOfBookController() {
+		this.sysController = SystemController.getInstance();
 	}
 	
 	public void handleGetBookBtn() {
-		book = this.sysController.getLibrary().getBookByISBN(Integer.parseInt(this.isbnField));
+		book = this.sysController.getLibrary().getBookByISBN(Integer.parseInt(this.isbnField.getText()));
 		if(book != null){
-			this.titleField = book.getTitle();
-			this.numberOfCopies = "" + book.getNumberOfCopies();
-			this.messageField = "";
+			this.titleField.setText(book.getTitle());
+			this.numberOfCopies.setText(""+book.getNumberOfCopies());
+			this.messageField.setText("");;
 		}
 		else{
-			this.titleField = "";
-			this.numberOfCopies = "";
-			this.messageField = "No exists a Book with ISBN " + this.isbnField;
+			this.titleField.setText("");
+			this.numberOfCopies.setText("");
+			this.messageField.setText("No exists a Book with ISBN " + this.isbnField);
 		}
 	}
 	
 	public void handleAddCopyBtn(){
 		if(book != null){
 			this.sysController.addCopyToBook(book);
-			this.numberOfCopies = "" + book.getNumberOfCopies();
-			this.messageField = "Copy added sucessfully!";
+			this.numberOfCopies.setText("" + book.getNumberOfCopies());
+			this.messageField.setText("Copy of Book added sucessfully!");
 		}
 		else{
-			this.messageField = "Please first get a book by ISBN.";
+			this.messageField.setText("Please first get a book by ISBN.");
 		}
 		
 	}

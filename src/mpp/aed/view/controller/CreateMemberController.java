@@ -1,80 +1,82 @@
 package mpp.aed.view.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import mpp.aed.library.LibraryException;
 import mpp.aed.library.SystemController;
 
 public class CreateMemberController {
 
 	@FXML
-	private String memberIdField;
+	private TextField memberIdField;
 	
 	@FXML
-	private String firstNameField;
+	private TextField firstNameField;
 	
 	@FXML
-	private String lastNameField;
+	private TextField lastNameField;
 	
 	@FXML
-	private String streetField;
+	private TextField streetField;
 	
 	@FXML
-	private String cityField;
+	private TextField cityField;
 	
 	@FXML
-	private String stateField;
+	private TextField stateField;
 	
 	@FXML
-	private String zipField;
+	private TextField zipField;
 	
 	@FXML
-	private String phoneNumberField;
+	private TextField phoneNumberField;
 	
 	@FXML
-	private String messageField;
+	private Label messageField;
 	
 	private SystemController sysController;
 	
-	public CreateMemberController(SystemController sysController) {
-		this.sysController = sysController;
+	public CreateMemberController() {
+		this.sysController = SystemController.getInstance();
 	}
 	
 	@FXML
 	public void handleCreateBtn() {
 		try {
-			this.messageField = "";
+			this.messageField.setText("");
 			if(this.validateFields())
-				this.sysController.createMember(Integer.parseInt(memberIdField), firstNameField, lastNameField, streetField, cityField, stateField, zipField, Integer.parseInt(phoneNumberField));
+				this.sysController.createMember(Integer.parseInt(memberIdField.getText()), firstNameField.getText(), lastNameField.getText(), streetField.getText(), cityField.getText(), stateField.getText(), zipField.getText(), Integer.parseInt(phoneNumberField.getText()));
 		} catch (LibraryException e) {
-			this.messageField = e.getMessage();
+			this.messageField.setText(e.getMessage());
 		}
 	}
 	
 	private boolean validateFields()
 	{
-		if(this.memberIdField.isEmpty()){
-			this.messageField = "Member Id cannot be empty";
+		if(this.memberIdField.getText().isEmpty()){
+			this.messageField.setText("Member Id cannot be empty");
 			return false;
 		}
 		try {
-			Integer.parseInt(memberIdField);
+			Integer.parseInt(memberIdField.getText());
 		} catch (NumberFormatException e) {
-			this.messageField = "Member Id must be numeric";
+			this.messageField.setText("Member Id must be numeric");
 			return false;
 		}
-		if(this.firstNameField.isEmpty()){
-			this.messageField = "First Name cannot be empty";
+		if(this.firstNameField.getText().isEmpty()){
+			this.messageField.setText("First Name cannot be empty");
 			return false;
 		}
-		if(this.lastNameField.isEmpty()){
-			this.messageField = "Last Name cannot be empty";
+		if(this.lastNameField.getText().isEmpty()){
+			this.messageField.setText("Last Name cannot be empty");
 			return false;
 		}
-		if(!this.phoneNumberField.isEmpty()){
+		if(!this.phoneNumberField.getText().isEmpty()){
 			try {
-				Integer.parseInt(phoneNumberField);
+				Integer.parseInt(phoneNumberField.getText());
 			} catch (NumberFormatException e) {
-				this.messageField = "Phone Number should be numeric";
+				this.messageField.setText("Phone Number should be numeric");
 				return false;
 			}
 		}

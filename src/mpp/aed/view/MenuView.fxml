@@ -17,7 +17,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Create Member" />
+                  <MenuItem mnemonicParsing="false" onAction="#openCreateMember" text="Create Member" />
                   <MenuItem fx:id="addBookMI" mnemonicParsing="false" onAction="#openAddBook" text="Add Book" />
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>

@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import mpp.aed.application.Main;
@@ -130,7 +131,30 @@ public class MenuController {
         }
     }
 
-		public void setMenuStage(Stage menuStage) {
-			this.menuStage = menuStage;
-		}
+	public void setMenuStage(Stage menuStage) {
+		this.menuStage = menuStage;
+	}
+		
+    @FXML
+    public void openCreateMember() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("../view/CreateMember.fxml"));
+        GridPane page;
+        try {
+            page = (GridPane) loader.load();
+
+            Stage checkoutBookStage = new Stage();
+            checkoutBookStage.setTitle("Create Member View");
+            checkoutBookStage.initModality(Modality.WINDOW_MODAL);
+            checkoutBookStage.initOwner(this.menuStage);
+            Scene scene = new Scene(page);
+            checkoutBookStage.setScene(scene);
+
+            // Show the dialog and wait until the user closes it
+            checkoutBookStage.showAndWait();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 }
