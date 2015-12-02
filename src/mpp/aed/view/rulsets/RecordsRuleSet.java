@@ -5,23 +5,20 @@
  */
 package mpp.aed.view.rulsets;
 
-import mpp.aed.view.controller.CheckoutController;
+import mpp.aed.view.controller.MemberController;
 
 /**
  *
  * @author 984966
  */
-public class CheckoutRuleSet implements RuleSet{
+public class RecordsRuleSet implements RuleSet{
 
     @Override
     public void applyRules(Object ob) throws RuleException {
-        CheckoutController cc = (CheckoutController)ob;
-        memberIdRule(cc);
-        ISBNRule(cc);
-              
+        MemberController mc = (MemberController)ob;
     }
     
-    private void memberIdRule(CheckoutController cc) throws RuleException {
+    private void memberIdRule(MemberController cc) throws RuleException {
         if( cc.getMemberIdField().getText().trim().isEmpty() ) {
             throw new RuleException("Member Id cannot be empty");
         }
@@ -32,16 +29,5 @@ public class CheckoutRuleSet implements RuleSet{
             throw new RuleException("Member Id must be numeric");
         }
     }
-    
-    private void ISBNRule(CheckoutController cc) throws RuleException {
-		String aISBN = cc.getIsbnField().getText();
-		if(aISBN == null || aISBN.equals("")){
-			throw new RuleException("ISBN must be non empty");
-		}else{
-			if(aISBN.length()!=10){
-				throw new RuleException("ISBN should have at lenght of 10 characters");
-			}
-		}
-	}
     
 }

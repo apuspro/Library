@@ -29,6 +29,9 @@ public class CheckoutController {
     public void onCheckoutPerformed() {
         String memberId = memberIdField.getText();
         String isbn = isbnField.getText();
+        
+        
+        
         User user = SystemController.getInstance().getCurrentUser();
         Librarian librarian = null;
         if( user instanceof Librarian ) {
