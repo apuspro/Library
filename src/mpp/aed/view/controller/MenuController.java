@@ -22,7 +22,13 @@ public class MenuController {
 	@FXML
 	private MenuItem addBookMI;
 	@FXML
+	private MenuItem addUserMI;
+	@FXML
 	private MenuItem chkOutBookMI;
+	@FXML
+	private MenuItem memberRecordsMI;
+	@FXML
+	private MenuItem addMemberMI;
 
 	private Stage primaryStage;
 	private Stage menuStage;
@@ -33,15 +39,25 @@ public class MenuController {
 		if(sController.getCurrentUser() instanceof Administrator || 
 				sController.getCurrentUser() instanceof SuperUser){
 			addBookMI.setVisible(true);
+			addMemberMI.setVisible(true);
 		}else{
 			addBookMI.setVisible(false);
+			addMemberMI.setVisible(false);
 		}
 		
 		if(sController.getCurrentUser() instanceof Librarian || 
 				sController.getCurrentUser() instanceof SuperUser){
 			chkOutBookMI.setVisible(true);
+			memberRecordsMI.setVisible(true);
 		}else{
 			chkOutBookMI.setVisible(false);
+			memberRecordsMI.setVisible(false);
+		}
+		
+		if(sController.getCurrentUser() instanceof SuperUser){
+			addUserMI.setVisible(true);
+		}else{
+			addUserMI.setVisible(false);
 		}
     }
 	

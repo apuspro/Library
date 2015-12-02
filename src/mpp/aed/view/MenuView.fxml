@@ -10,15 +10,15 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#openMembersId" text="Member's checkout records" />
+                  <MenuItem fx:id="memberRecordsMI" mnemonicParsing="false" onAction="#openMembersId" text="Member's checkout records" />
                   <MenuItem fx:id="chkOutBookMI" mnemonicParsing="false" onAction="#openCheckoutBook" text="Checkout book" />
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#openUserView" text="Create User" />
-                  <MenuItem mnemonicParsing="false" onAction="#openCreateMember" text="Create Member" />
+                  <MenuItem fx:id="addUserMI" mnemonicParsing="false" onAction="#openUserView" text="Create User" />
+                  <MenuItem fx:id="addMemberMI" mnemonicParsing="false" onAction="#openCreateMember" text="Create Member" />
                   <MenuItem fx:id="addBookMI" mnemonicParsing="false" onAction="#openAddBook" text="Create Book" />
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
