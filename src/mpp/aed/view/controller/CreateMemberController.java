@@ -5,6 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import mpp.aed.library.LibraryException;
 import mpp.aed.library.SystemController;
+import mpp.aed.view.rulsets.RuleException;
+import mpp.aed.view.rulsets.RuleSetFactory;
 
 public class CreateMemberController {
 
@@ -45,51 +47,61 @@ public class CreateMemberController {
 	public void handleCreateBtn() {
 		try {
 			this.messageField.setText("");
-			if(this.validateFields()){
-				this.sysController.createMember(Integer.parseInt(memberIdField.getText()), firstNameField.getText(), lastNameField.getText(), streetField.getText(), cityField.getText(), stateField.getText(), zipField.getText(), Integer.parseInt(phoneNumberField.getText()));
-				this.messageField.setText("Member created succesfully");
-				this.memberIdField.setText("");
-				this.firstNameField.setText("");
-				this.lastNameField.setText("");
-				this.streetField.setText("");
-				this.stateField.setText("");
-				this.cityField.setText("");
-				this.zipField.setText("");
-				this.phoneNumberField.setText("");
-			}
+			RuleSetFactory.getRuleSet(this).applyRules(this);
+			this.sysController.createMember(Integer.parseInt(memberIdField.getText()), firstNameField.getText(), lastNameField.getText(), streetField.getText(), cityField.getText(), stateField.getText(), zipField.getText(), Long.parseLong(phoneNumberField.getText()));
+			clearFields();
 		} catch (LibraryException e) {
+			this.messageField.setText(e.getMessage());
+		} catch (RuleException e) {
 			this.messageField.setText(e.getMessage());
 		}
 	}
-	
-	private boolean validateFields()
-	{
-		if(this.memberIdField.getText().isEmpty()){
-			this.messageField.setText("Member Id cannot be empty");
-			return false;
-		}
-		try {
-			Integer.parseInt(memberIdField.getText());
-		} catch (NumberFormatException e) {
-			this.messageField.setText("Member Id must be numeric");
-			return false;
-		}
-		if(this.firstNameField.getText().isEmpty()){
-			this.messageField.setText("First Name cannot be empty");
-			return false;
-		}
-		if(this.lastNameField.getText().isEmpty()){
-			this.messageField.setText("Last Name cannot be empty");
-			return false;
-		}
-		if(!this.phoneNumberField.getText().isEmpty()){
-			try {
-				Integer.parseInt(phoneNumberField.getText());
-			} catch (NumberFormatException e) {
-				this.messageField.setText("Phone Number should be numeric");
-				return false;
-			}
-		}
-		return true;
+
+	private void clearFields() {
+		this.messageField.setText("Member created succesfully");
+		this.memberIdField.setText("");
+		this.firstNameField.setText("");
+		this.lastNameField.setText("");
+		this.streetField.setText("");
+		this.stateField.setText("");
+		this.cityField.setText("");
+		this.zipField.setText("");
+		this.phoneNumberField.setText("");
+	}
+
+	public TextField getMemberIdField() {
+		return memberIdField;
+	}
+
+	public TextField getFirstNameField() {
+		return firstNameField;
+	}
+
+	public TextField getLastNameField() {
+		return lastNameField;
+	}
+
+	public TextField getStreetField() {
+		return streetField;
+	}
+
+	public TextField getCityField() {
+		return cityField;
+	}
+
+	public TextField getStateField() {
+		return stateField;
+	}
+
+	public TextField getZipField() {
+		return zipField;
+	}
+
+	public TextField getPhoneNumberField() {
+		return phoneNumberField;
+	}
+
+	public Label getMessageField() {
+		return messageField;
 	}
 }

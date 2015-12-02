@@ -65,7 +65,7 @@ public class SystemController {
     
 
     public void createMember(int memberId, String firstName, String lastName, String street, String city, String state, String zip,
-            int phoneNumber) throws LibraryException {
+            long phoneNumber) throws LibraryException {
         Member newMember = new Member(memberId, firstName, lastName, street, city, state, zip, phoneNumber);
         this.library.addMember(newMember);
         this.serialize(this.library);

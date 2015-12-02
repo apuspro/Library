@@ -3,6 +3,8 @@ package mpp.aed.view.controller;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import mpp.aed.library.*;
+import mpp.aed.view.rulsets.RuleException;
+import mpp.aed.view.rulsets.RuleSetFactory;
 
 public class AddCopyOfBookController {
 
@@ -36,11 +38,21 @@ public class AddCopyOfBookController {
 		}
 	}
 	
+	public TextField getIsbnField() {
+		return isbnField;
+	}
+
 	public void handleAddCopyBtn(){
 		if(book != null){
-			this.sysController.addCopyToBook(book);
-			this.numberOfCopies.setText("" + book.getNumberOfCopies());
-			this.messageField.setText("Copy of Book added sucessfully!");
+			try {
+				RuleSetFactory.getRuleSet(this).applyRules(this);
+				this.sysController.addCopyToBook(book);
+				this.numberOfCopies.setText("" + book.getNumberOfCopies());
+				this.isbnField.setText("" + book.getISBN());
+				this.messageField.setText("Copy of Book added sucessfully!");
+			} catch (RuleException e) {
+				this.messageField.setText(e.getMessage());
+			}
 		}
 		else{
 			this.messageField.setText("Please first get a book by ISBN.");

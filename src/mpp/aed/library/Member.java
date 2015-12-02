@@ -10,11 +10,11 @@ public class Member implements Serializable {
 	private String city;
 	private String state;
 	private String zip;
-	private int phoneNumber;
+	private long phoneNumber;
 	private CheckOutRecord checkOutRecord = new CheckOutRecord();
 	
 	public Member(int memberId, String firstName, String lastName, String street, String city, String state, String zip,
-			int phoneNumber) {
+			long phoneNumber) {
 		this.memberId = memberId;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -61,7 +61,7 @@ public class Member implements Serializable {
 		return zip;
 	}
 
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
 	

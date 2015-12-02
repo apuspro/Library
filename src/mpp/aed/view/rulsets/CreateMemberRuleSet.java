@@ -26,12 +26,10 @@ final public class CreateMemberRuleSet implements RuleSet {
 		if(controller.getLastNameField().getText().isEmpty()){
 			throw new RuleException("Last Name cannot be empty");
 		}
-		if(!controller.getPhoneNumberField().getText().isEmpty()){
-			try {
-				Integer.parseInt(controller.getPhoneNumberField().getText());
-			} catch (NumberFormatException e) {
-				throw new RuleException("Phone Number should be numeric");
-			}
+		try {
+			Long.parseLong(controller.getPhoneNumberField().getText());
+		} catch (NumberFormatException e) {
+			throw new RuleException("Phone Number should be numeric");
 		}
 	}
 }
