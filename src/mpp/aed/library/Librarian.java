@@ -34,6 +34,7 @@ public class Librarian extends User {
         if( copyBook == null ) {
             return false;
         }
+        
         copyBook.setAvailable(false);
         
         Entry entry = new Entry();

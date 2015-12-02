@@ -34,16 +34,6 @@ import mpp.aed.library.Member;
  */
 public class MembersCheckoutRecordsController {
     
-    private Stage parentStage;
-    
-    private class Record {
-        public String title;
-        public String isbn;
-        public LocalDate checkoutDate;
-        public LocalDate dueDate;
-    }
-    
-    private ObservableList<Record> checkoutRecordsData = FXCollections.observableArrayList();
     
     @FXML
     private TableView<Record> checkoutRecordsView;
@@ -55,6 +45,20 @@ public class MembersCheckoutRecordsController {
     private TableColumn<Record, String> checkoutDateColumn;
     @FXML
     private TableColumn<Record, String> dueDateColumn;
+    
+    private Stage parentStage;
+    
+    private Stage selfStage;
+    
+    private class Record {
+        public String title;
+        public String isbn;
+        public LocalDate checkoutDate;
+        public LocalDate dueDate;
+    }
+    
+    private ObservableList<Record> checkoutRecordsData = FXCollections.observableArrayList();
+    
   
     @FXML
     protected void initialize() {
@@ -114,6 +118,11 @@ public class MembersCheckoutRecordsController {
         }        
         checkoutRecordsView.setItems(checkoutRecordsData);
     }
+    
+    @FXML
+    public void onBackPerformed() {
+        this.selfStage.hide();
+    }
 
     public Stage getParentStage() {
         return parentStage;
@@ -121,5 +130,13 @@ public class MembersCheckoutRecordsController {
 
     public void setParentStage(Stage parentStage) {
         this.parentStage = parentStage;
-    }  
+    }
+    
+    public Stage getSelfStage() {
+        return selfStage;
+    }
+
+    public void setSelfStage(Stage selfStage) {
+        this.selfStage = selfStage;
+    }
 }
