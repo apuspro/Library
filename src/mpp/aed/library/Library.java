@@ -21,10 +21,12 @@ public class Library implements Serializable {
             Library aLibrary = new DataAccessFacade().readLibrary("library");
             if(aLibrary!=null) {
             	instance = aLibrary;
+            	System.out.println("Library data Loaded");
             } else {
             	instance = new Library("Little Library");
             	User defaultUser = new SuperUser("admin", "admin2246");
             	instance.addUser(defaultUser);
+            	System.out.println("Library data not found - new Library Created");
             }
         }
         
