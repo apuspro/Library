@@ -2,6 +2,8 @@ package mpp.aed.view.rulsets;
 
 import java.util.HashMap;
 
+import mpp.aed.view.controller.AddCopyOfBookController;
+import mpp.aed.view.controller.CreateMemberController;
 import mpp.aed.view.controller.LoginController;
 
 final public class RuleSetFactory {
@@ -9,6 +11,8 @@ final public class RuleSetFactory {
 	static HashMap<Class<? extends Object>, RuleSet> map = new HashMap<>();
 	static {
 		map.put(LoginController.class, new LoginRuleSet());
+		map.put(CreateMemberController.class, new CreateMemberRuleSet());
+		map.put(AddCopyOfBookController.class, new AddCopyOfBookRuleSet());
 	}
 	public static RuleSet getRuleSet(Object c) {
 		Class<? extends Object> cl = c.getClass();
