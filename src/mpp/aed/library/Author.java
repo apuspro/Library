@@ -48,4 +48,13 @@ public class Author implements Serializable{
 		return bio;
 	}
 	
+	@Override
+	public boolean equals(Object object){
+		if(object != null){
+			if(((Author)object).firstName.equals(this.firstName) && ((Author)object).lastName.equals(this.lastName)){
+				return true;
+			}
+		}
+		return false;
+	}
 }

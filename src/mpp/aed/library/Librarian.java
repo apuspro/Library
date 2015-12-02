@@ -42,6 +42,8 @@ public class Librarian extends User {
         entry.setCopyBook(copyBook);
         CheckOutRecord cor = member.getCheckOutRecord();
         cor.addEntry(entry);
+        
+        SystemController.getInstance().serialize(library);
         System.out.println("The book checked out!!!");        
         
         return true;

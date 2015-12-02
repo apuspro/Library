@@ -93,4 +93,14 @@ public final class Book implements Serializable {
 	public List<Author> getAuthors() {
 		return authors;
 	}
+	
+	@Override
+	public boolean equals(Object object){
+		if(object != null){
+			if(((Book)object).ISBN==this.ISBN){
+				return true;
+			}
+		}
+		return false;
+	}
 }
