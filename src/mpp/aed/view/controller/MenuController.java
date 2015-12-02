@@ -130,6 +130,29 @@ public class MenuController {
             e.printStackTrace();
         }
     }
+    
+        @FXML
+    public void openMembersCheckoutRecords() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("../view/MemberCheckoutRecords.fxml"));
+        AnchorPane page;
+        try {
+            page = (AnchorPane) loader.load();
+
+            Stage checkoutBookStage = new Stage();
+            checkoutBookStage.setTitle("Member's checkout records");
+            checkoutBookStage.initModality(Modality.WINDOW_MODAL);
+            checkoutBookStage.initOwner(this.menuStage);
+            Scene scene = new Scene(page);
+            checkoutBookStage.setScene(scene);
+
+            // Show the dialog and wait until the user closes it
+            checkoutBookStage.showAndWait();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
 	public void setMenuStage(Stage menuStage) {
 		this.menuStage = menuStage;
