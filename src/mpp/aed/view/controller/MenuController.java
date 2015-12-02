@@ -143,13 +143,37 @@ public class MenuController {
             checkoutBookStage.setTitle("Member's checkout records");
             checkoutBookStage.initModality(Modality.WINDOW_MODAL);
             checkoutBookStage.initOwner(this.menuStage);
-            MembersCheckoutRecordsController controller = loader.getController();
             
             Scene scene = new Scene(page);
             checkoutBookStage.setScene(scene);
 
             // Show the dialog and wait until the user closes it
             checkoutBookStage.showAndWait();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    
+    public void openMembersId() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("../view/MemberIdView.fxml"));
+        AnchorPane page;
+        try {
+            page = (AnchorPane) loader.load();
+
+            Stage enterMemberIdStagee = new Stage();
+            enterMemberIdStagee.setTitle("Member's checkout records");
+            enterMemberIdStagee.initModality(Modality.WINDOW_MODAL);
+            enterMemberIdStagee.initOwner(this.menuStage);
+            //MembersCheckoutRecordsController controller = loader.getController();
+            MembersCheckoutRecordsController controller = loader.getController();
+            controller.setParentStage(enterMemberIdStagee);
+            Scene scene = new Scene(page);
+            enterMemberIdStagee.setScene(scene);
+
+            // Show the dialog and wait until the user closes it
+            enterMemberIdStagee.showAndWait();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
