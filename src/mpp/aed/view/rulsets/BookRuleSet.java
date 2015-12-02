@@ -27,7 +27,7 @@ final public class BookRuleSet implements RuleSet {
 		if(aISBN == null || aISBN.equals("")){
 			throw new RuleException("ISBN must be non empty");
 		}else{
-			if(aISBN.length()==10){
+			if(aISBN.length()!=10){
 				throw new RuleException("ISBN should have at lenght of 10 characters");
 			}
 		}

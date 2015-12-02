@@ -4,14 +4,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.MembersCheckoutRecordsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="773.0" stylesheets="@../application/DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.MembersCheckoutRecordsController">
    <children>
-      <TableView fx:id="checkoutRecordsView" layoutX="-3.0" layoutY="39.0" prefHeight="294.0" prefWidth="589.0">
+      <TableView fx:id="checkoutRecordsView" layoutX="-3.0" layoutY="39.0" prefHeight="294.0" prefWidth="779.0">
         <columns>
           <TableColumn fx:id="titleColumn" prefWidth="249.99996948242188" text="Title" />
-          <TableColumn fx:id="isbnColumn" prefWidth="90.0" text="ISBN" />
-            <TableColumn fx:id="checkoutDateColumn" prefWidth="119.0" text="Checkout date" />
-            <TableColumn fx:id="dueDateColumn" prefWidth="129.0" text="Due date" />
+          <TableColumn fx:id="isbnColumn" prefWidth="152.0" text="ISBN" />
+            <TableColumn fx:id="checkoutDateColumn" prefWidth="211.0" text="Checkout date" />
+            <TableColumn fx:id="dueDateColumn" prefWidth="158.0" text="Due date" />
         </columns>
       </TableView>
       <Label layoutX="264.0" layoutY="14.0" text="checkout records" />
