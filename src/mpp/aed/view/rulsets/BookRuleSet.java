@@ -39,8 +39,13 @@ final public class BookRuleSet implements RuleSet {
 		if(aISBN == null || aISBN.equals("")){
 			throw new RuleException("ISBN must be non empty");
 		}else{
+			try {
+				Long.parseLong(aISBN);
+			} catch (NumberFormatException e) {
+				throw new RuleException("ISBN must be numeric");
+			}
 			if(aISBN.length()!=10){
-				throw new RuleException("ISBN should have at lenght of 10 characters");
+				throw new RuleException("ISBN should have at lenght of 10 digits");
 			}
 		}
 	}
@@ -49,6 +54,11 @@ final public class BookRuleSet implements RuleSet {
 		String aISBN = book.getISBNField().getText();
 		if(aISBN == null || aISBN.equals("")){
 			throw new RuleException("ISBN must be non empty");
+		}
+		try {
+			Long.parseLong(aISBN);
+		} catch (NumberFormatException e) {
+			throw new RuleException("ISBN must be numeric");
 		}
 	}
 	

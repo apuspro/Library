@@ -29,13 +29,10 @@ public class MenuController {
 	private MenuItem memberRecordsMI;
 	@FXML
 	private MenuItem addMemberMI;
- 
-        @FXML
-        private MenuItem searchBookMI;
- 
+    @FXML
+    private MenuItem searchBookMI;
 	@FXML
 	private MenuItem listBookMI;
- 
 	@FXML
 	private MenuItem addCopyBookMI;
 	
@@ -62,11 +59,11 @@ public class MenuController {
 				sController.getCurrentUser() instanceof SuperUser){
 			chkOutBookMI.setVisible(true);
 			memberRecordsMI.setVisible(true);
-                        searchBookMI.setVisible(true);
+            searchBookMI.setVisible(true);
 		}else{
 			chkOutBookMI.setVisible(false);
 			memberRecordsMI.setVisible(false);
-                        searchBookMI.setVisible(false);
+            searchBookMI.setVisible(false);
 		}
 		
 		if(sController.getCurrentUser() instanceof SuperUser){
@@ -91,6 +88,7 @@ public class MenuController {
 			Scene scene = new Scene(page);
 			scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
 			aboutStage.setScene(scene);
+			aboutStage.setResizable(false);
 	
 			// Show the dialog and wait until the user closes it
 			aboutStage.showAndWait();
@@ -182,6 +180,7 @@ public class MenuController {
             Scene scene = new Scene(page);
             scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
             enterMemberIdStagee.setScene(scene);
+            enterMemberIdStagee.setResizable(false);
 
             // Show the dialog and wait until the user closes it
             enterMemberIdStagee.showAndWait();
@@ -300,6 +299,7 @@ public class MenuController {
             Scene scene = new Scene(page);
             scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
             onSearchBookStage.setScene(scene);
+            onSearchBookStage.setResizable(false);
 
             // Show the dialog and wait until the user closes it
             onSearchBookStage.showAndWait();

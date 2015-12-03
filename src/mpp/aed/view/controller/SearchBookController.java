@@ -37,7 +37,7 @@ public class SearchBookController {
             resultMsg.setText(ex.getMessage());
         }
         Library library = Library.getInstance();
-        if( library.getBookByISBN(Integer.parseInt(isbnField.getText().trim())) != null ) {
+        if( library.getBookByISBN(Long.parseLong(isbnField.getText().trim())) != null ) {
             resultMsg.setFill(Color.GREEN);
             resultMsg.setText("A book with ISBN: "+isbnField.getText().trim()+" exists");
         } else {

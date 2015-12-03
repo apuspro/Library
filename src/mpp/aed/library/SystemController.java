@@ -121,4 +121,8 @@ public class SystemController {
 	public void printBooks(){
 		this.library.printBooks();
 	}
+	
+	public void printMembers(){
+		this.library.printMembers();
+	}
 }

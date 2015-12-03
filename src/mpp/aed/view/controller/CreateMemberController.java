@@ -57,6 +57,7 @@ public class CreateMemberController  implements Initializable {
 	
 	public CreateMemberController() {
 		this.sysController = SystemController.getInstance();
+		this.sysController.printMembers();
 	}
 
 	private void setUpCreationViewMode() {
@@ -139,7 +140,7 @@ public class CreateMemberController  implements Initializable {
 			this.setUpModificationViewMode();
 		}
 		else{
-			this.messageField.setText("It doesnÂ´t exist a member with Member Id" + this.memberIdField.getText() ); 
+			this.messageField.setText("It doesn´t exist a member with Member Id " + this.memberIdField.getText() ); 
 		}
 	}
 

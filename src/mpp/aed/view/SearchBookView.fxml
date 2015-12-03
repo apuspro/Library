@@ -6,8 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="217.0" prefWidth="471.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.SearchBookController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="217.0" prefWidth="471.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.SearchBookController">
    <children>
       <GridPane layoutX="2.0" prefHeight="217.0" prefWidth="459.0">
         <columnConstraints>
@@ -27,8 +26,8 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <Button mnemonicParsing="false" text="Search" GridPane.columnIndex="2" onAction="#onSearchPerformed"/>
-            <Button mnemonicParsing="false" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" onAction="#onCancelPerformed"/>
+            <Button mnemonicParsing="false" onAction="#onSearchPerformed" text="Search" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#onCancelPerformed" prefHeight="31.0" prefWidth="114.0" text="Back" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <Text fx:id="resultMsg" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="247.6708984375" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
          </children>
       </GridPane>

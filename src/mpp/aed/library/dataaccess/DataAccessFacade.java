@@ -20,7 +20,7 @@ public class DataAccessFacade implements DataAccess {
 			out = new ObjectOutputStream(Files.newOutputStream(path));
 			out.writeObject(library);
 		} catch(IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		} finally {
 			if(out != null) {
 				try {

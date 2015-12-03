@@ -122,4 +122,15 @@ public class Library implements Serializable {
 			System.out.println(book.toString());
 		}
 	}
+	
+	public void printMembers(){
+		System.out.println("--List of Members--");
+		for (Member member : this.getMembers()) {
+			System.out.println(member.toString());
+		}
+	}
+
+	public List<Member> getMembers() {
+		return members;
+	}
 }

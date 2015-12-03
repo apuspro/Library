@@ -46,7 +46,11 @@ final public class AuthorRuleSet implements RuleSet {
 		if(phone == null || phone.equals("")){
 			throw new RuleException("Phone must be non empty");
 		}
-		
+		try {
+			Long.parseLong(phone);
+		} catch (NumberFormatException e) {
+			throw new RuleException("Phone must be numeric");
+		}
 		if(phone.length()<10){
 			throw new RuleException("Phone must be a number of at least 10 digits");
 		}

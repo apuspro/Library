@@ -110,6 +110,6 @@ public final class Book implements Serializable {
 	
 	@Override
 	public String toString(){
-		return ISBN+" "+title+" CheckOutLenght:"+maxCheckoutDays;
+		return ISBN+" "+title+" CheckOutLenght:"+maxCheckoutDays+" Author:"+authors.get(0).toString();
 	}
 }

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="258.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.CheckoutController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="258.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.CheckoutController">
    <children>
       <GridPane prefHeight="251.0" prefWidth="421.0">
         <columnConstraints>
@@ -24,12 +24,12 @@
             <Label text="ISBN:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
             <TextField fx:id="memberIdField" prefHeight="25.0" prefWidth="107.0" GridPane.columnIndex="1">
                <GridPane.margin>
-                  <Insets right="100.0" />
+                  <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="isbnField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="isbnField" prefHeight="31.0" prefWidth="116.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets right="100.0" />
+                  <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
             <Button mnemonicParsing="false" onAction="#onCheckoutPerformed" text="Checkout" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />

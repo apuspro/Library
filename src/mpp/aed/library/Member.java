@@ -98,4 +98,8 @@ public class Member implements Serializable {
 		Member member = (Member)obj;
 		return member.memberId == this.memberId;
 	}
+	
+	public String toString(){
+		return "MemberId: "+memberId+" Name:"+firstName+" "+lastName;
+	}
 }
