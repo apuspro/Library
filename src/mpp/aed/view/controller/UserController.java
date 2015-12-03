@@ -9,11 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import mpp.aed.library.Administrator;
-import mpp.aed.library.Librarian;
-import mpp.aed.library.SuperUser;
 import mpp.aed.library.SystemController;
-import mpp.aed.library.User;
 import mpp.aed.view.rulsets.RuleException;
 import mpp.aed.view.rulsets.RuleSet;
 import mpp.aed.view.rulsets.RuleSetFactory;
@@ -52,16 +48,7 @@ public class UserController {
 		try{
 			userRules.applyRules(this);
 			
-			User newUser;
-			if(comboBox.getValue().equals("Administrator")){
-				newUser = new Administrator(usernameField.getText(), passwordField.getText());
-			}else if(comboBox.getValue().equals("Librarian")){
-				newUser = new Librarian(usernameField.getText(), passwordField.getText());
-			}else{
-				newUser = new SuperUser(usernameField.getText(), passwordField.getText());
-			}
-			
-			SystemController.getInstance().addUser(newUser);
+			SystemController.getInstance().addUser(this.usernameField.getText(), this.passwordField.getText(), this.comboBox.getValue());
 			SystemController.getInstance().serialize(SystemController.getInstance().getLibrary());
 			
 			resultMsg.setFill(Color.GREEN);
@@ -80,10 +67,7 @@ public class UserController {
 	
 	@FXML
 	public void printUsers(){
-		System.out.println("--List of Users--");
-		for (User user : SystemController.getInstance().getLibrary().getUsers()) {
-			System.out.println(user.toString());
-		}
+		SystemController.getInstance().printUsers();
 	}
 
 	public void setUserStage(Stage userStage) {

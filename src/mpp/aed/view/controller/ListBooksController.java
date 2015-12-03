@@ -98,10 +98,7 @@ public class ListBooksController {
 	
 	@FXML
 	public void printBooks(){
-		System.out.println("--List of Books--");
-		for (Book book : SystemController.getInstance().getLibrary().getBooks()) {
-			System.out.println(book.toString());
-		}
+		SystemController.getInstance().printBooks();
 	}
 	
 	@FXML

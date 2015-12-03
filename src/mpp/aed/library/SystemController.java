@@ -97,10 +97,28 @@ public class SystemController {
 		return false;
 	}
 	
-	public boolean addUser(User user){
-		if(user!=null){
-			return this.library.addUser(user);
+	public boolean addUser(String username, String password, String type){
+		if(username!=null && password!=null && type!=null){
+			User newUser;
+			if(type.equals("Administrator")){
+				newUser = new Administrator(username, password);
+			}else if(type.equals("Librarian")){
+				newUser = new Librarian(username, password);
+			}else{
+				newUser = new SuperUser(username, password);
+			}
+			
+			return this.library.addUser(newUser);
 		}
 		return false;
+	}
+	
+	public void printUsers(){
+		 this.library.printUsers();
+		
+	}
+	
+	public void printBooks(){
+		this.library.printBooks();
 	}
 }

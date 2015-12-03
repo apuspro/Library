@@ -108,4 +108,18 @@ public class Library implements Serializable {
 	public List<User> getUsers() {
 		return users;
 	}
+	
+	public void printUsers(){
+		System.out.println("--List of Users--");
+		for (User user : this.getUsers()) {
+			System.out.println(user.toString());
+		}
+	}
+	
+	public void printBooks(){
+		System.out.println("--List of Books--");
+		for (Book book : this.getBooks()) {
+			System.out.println(book.toString());
+		}
+	}
 }
