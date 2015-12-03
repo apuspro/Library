@@ -13,8 +13,8 @@ public final class Book implements Serializable {
     private String title;
     private long ISBN;
     private int maxCheckoutDays;
-    private final List<CopyBook> copies = new ArrayList<>();
-    private final List<Author> authors = new ArrayList<>();
+    private List<CopyBook> copies = new ArrayList<>();
+    private List<Author> authors = new ArrayList<>();
 
     public Book() {
         addCopyBook();
