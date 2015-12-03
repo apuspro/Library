@@ -59,7 +59,7 @@ public final class Book implements Serializable {
         return getAvailableCopy();
     }
 
-    public boolean isAvailable(int ISBN) {
+    public boolean isAvailable(long ISBN) {
         if (this.ISBN == ISBN) {
             return getAvailableCopy()!=null;
         }
