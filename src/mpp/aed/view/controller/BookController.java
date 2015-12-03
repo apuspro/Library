@@ -70,7 +70,7 @@ public class BookController {
 				newBook.addCopyBook();
 			}
 			
-			sController.getLibrary().addBook(newBook);
+			sController.addBook(newBook);
 			sController.serialize(sController.getLibrary());
 			
 			resultMsg.setFill(Color.GREEN);

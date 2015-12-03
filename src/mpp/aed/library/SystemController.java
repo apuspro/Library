@@ -89,4 +89,18 @@ public class SystemController {
 	public void setCurrentUser(User currentUser) {
 		this.currentUser = currentUser;
 	}
+	
+	public boolean addBook(Book book){
+		if(book!=null){
+			return this.library.addBook(book);
+		}
+		return false;
+	}
+	
+	public boolean addUser(User user){
+		if(user!=null){
+			return this.library.addUser(user);
+		}
+		return false;
+	}
 }

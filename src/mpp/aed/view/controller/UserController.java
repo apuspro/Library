@@ -11,7 +11,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import mpp.aed.library.Administrator;
 import mpp.aed.library.Librarian;
-import mpp.aed.library.Library;
 import mpp.aed.library.SuperUser;
 import mpp.aed.library.SystemController;
 import mpp.aed.library.User;
@@ -62,9 +61,8 @@ public class UserController {
 				newUser = new SuperUser(usernameField.getText(), passwordField.getText());
 			}
 			
-			Library aLibrary = SystemController.getInstance().getLibrary();
-			aLibrary.addUser(newUser);
-			SystemController.getInstance().serialize(aLibrary);
+			SystemController.getInstance().addUser(newUser);
+			SystemController.getInstance().serialize(SystemController.getInstance().getLibrary());
 			
 			resultMsg.setFill(Color.GREEN);
 			resultMsg.setText("User "+usernameField.getText()+" created");
