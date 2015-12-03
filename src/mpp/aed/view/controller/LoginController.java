@@ -63,6 +63,7 @@ public class LoginController {
 		}
 	}
 	
+	@FXML
 	private void openMenu(){
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("../view/MenuView.fxml"));
@@ -105,6 +106,11 @@ public class LoginController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	public void onEnter(){
+		handleLoginBtn();
 	}
 
 	/**

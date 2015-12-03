@@ -19,6 +19,10 @@ public final class Book implements Serializable {
     public Book() {
         addCopyBook();
     }
+    
+    public Book(int ISBN) {
+    	this.ISBN = ISBN;
+    }
 
     public Book(String title, int ISBN, int maxCheckoutDays) {
         this.title = title;

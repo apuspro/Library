@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import mpp.aed.application.Main;
 import mpp.aed.library.Book;
 import mpp.aed.library.SystemController;
+import mpp.aed.view.rulsets.BookRuleSet;
 import mpp.aed.view.rulsets.RuleException;
 import mpp.aed.view.rulsets.RuleSet;
 import mpp.aed.view.rulsets.RuleSetFactory;
@@ -42,6 +43,9 @@ public class BookController {
 	
 	@FXML
 	protected void initialize(){
+		
+		printBooks();
+		
 		bOptions = 
 			    FXCollections.observableArrayList(
 			        "7 days",
@@ -53,9 +57,9 @@ public class BookController {
 	
 	@FXML
 	public void saveBook(){
-		RuleSet userRules = RuleSetFactory.getRuleSet(this);
+		RuleSet bookRules = RuleSetFactory.getRuleSet(this);
 		try{
-			userRules.applyRules(this);
+			bookRules.applyRules(this);
 			
 			SystemController sController =  SystemController.getInstance();
 			this.newBook.setTitle(this.titleField.getText());
@@ -70,8 +74,8 @@ public class BookController {
 			sController.serialize(sController.getLibrary());
 			
 			resultMsg.setFill(Color.GREEN);
-			resultMsg.setText("Book "+this.titleField.getText()+" created");
-			System.out.println("Book "+this.titleField.getText()+" created");
+			resultMsg.setText("Book "+this.titleField.getText()+" saved");
+			System.out.println("Book "+this.titleField.getText()+" saved");
 		}catch(RuleException e) {
 			resultMsg.setFill(Color.RED);
 			resultMsg.setText(e.getMessage());
@@ -95,8 +99,10 @@ public class BookController {
 			controller.setAuthorStage(authorStage);
 			
 			Scene scene = new Scene(page);
+			
 			scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
 			authorStage.setScene(scene);
+			authorStage.setResizable(false);
 			
 			authorStage.showAndWait();
 		
@@ -141,5 +147,47 @@ public class BookController {
 		for (Book book : SystemController.getInstance().getLibrary().getBooks()) {
 			System.out.println(book.toString());
 		}
+	}
+	
+	@FXML
+	public void searchBook(){
+		RuleSet bookRules = RuleSetFactory.getRuleSet(this);
+		try{
+			resultMsg.setText("");
+			((BookRuleSet)bookRules).applyRulesSearch(this);
+			Book tempBook = new Book(Integer.parseInt(ISBNField.getText()));
+			int index = SystemController.getInstance().getLibrary().getBooks().lastIndexOf(tempBook);
+			tempBook = SystemController.getInstance().getLibrary().getBooks().get(index);
+			
+			ISBNField.setEditable(false);
+			ISBNField.setText(tempBook.getISBN()+"");
+			titleField.setText(tempBook.getTitle());
+			if(tempBook.getMaxCheckoutDays()==7){
+				maxChecOutLengthField.getSelectionModel().select(0);
+			}else{
+				maxChecOutLengthField.getSelectionModel().select(1);
+			}
+			numberOfCopiesField.setText(tempBook.getNumberOfCopies()+"");
+			
+			this.newBook = tempBook;
+			resultMsg.setFill(Color.BLUE);
+			resultMsg.setText("Edit Mode");
+		}catch(RuleException e) {
+			resultMsg.setFill(Color.RED);
+			resultMsg.setText(e.getMessage());
+		}
+	}
+	
+	@FXML
+	public void cleanFields(){
+		
+			ISBNField.setText("");
+			titleField.setText("");
+			maxChecOutLengthField.getSelectionModel().clearSelection();
+			numberOfCopiesField.setText("");
+			
+			this.newBook = new Book();
+			resultMsg.setText("");
+			ISBNField.setEditable(true);
 	}
 }

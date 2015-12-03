@@ -47,8 +47,8 @@ final public class AuthorRuleSet implements RuleSet {
 			throw new RuleException("Phone must be non empty");
 		}
 		
-		if(phone.length()!=10){
-			throw new RuleException("Phone must be a number of 10 digits");
+		if(phone.length()<10){
+			throw new RuleException("Phone must be a number of at least 10 digits");
 		}
 	}
 	

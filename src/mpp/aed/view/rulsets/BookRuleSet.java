@@ -22,6 +22,11 @@ final public class BookRuleSet implements RuleSet {
 		
 	}
 	
+	public void applyRulesSearch(Object ob) throws RuleException {
+		BookController bookController = (BookController)ob;
+		ISBNRuleSearch(bookController);
+	}
+	
 	private void ISBNRule(BookController book) throws RuleException {
 		String aISBN = book.getISBNField().getText();
 		if(aISBN == null || aISBN.equals("")){
@@ -30,6 +35,13 @@ final public class BookRuleSet implements RuleSet {
 			if(aISBN.length()!=10){
 				throw new RuleException("ISBN should have at lenght of 10 characters");
 			}
+		}
+	}
+	
+	private void ISBNRuleSearch(BookController book) throws RuleException {
+		String aISBN = book.getISBNField().getText();
+		if(aISBN == null || aISBN.equals("")){
+			throw new RuleException("ISBN must be non empty");
 		}
 	}
 	
@@ -42,10 +54,9 @@ final public class BookRuleSet implements RuleSet {
 	
 	private void existRule(BookController book) throws RuleException {
 		String aISBN = book.getISBNField().getText();
-		for (Book aBook : SystemController.getInstance().getLibrary().getBooks()) {
-			if(aBook.getISBN()==Integer.parseInt(aISBN)){
-				throw new RuleException("Book already exists");
-			}
+		Book tempBook = new Book(Integer.parseInt(aISBN));
+		if(SystemController.getInstance().getLibrary().getBooks().contains(tempBook)) {
+			throw new RuleException("Book already exists");
 		}
 	}
 	

@@ -100,6 +100,7 @@ public class MenuController {
 			Scene scene = new Scene(page);
 			scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
 			bookStage.setScene(scene);
+			bookStage.setResizable(false);
 			
 			BookController controller = loader.getController();
 			controller.setBookStage(bookStage);

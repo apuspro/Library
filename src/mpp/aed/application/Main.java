@@ -16,11 +16,12 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Login.fxml"));
 			Parent root = (Parent)loader.load();
 			LoginController controller = (LoginController)loader.getController();
-			//Parent root = FXMLLoader.load(getClass().getResource("../view/Login.fxml"));
+			
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("DarkTheme.css").toExternalForm());
 			primaryStage.setTitle("Login Page");
 			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
 			controller.setPrimaryStage(primaryStage);
 			primaryStage.show();
 		} catch(Exception e) {

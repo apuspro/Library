@@ -31,10 +31,9 @@ final public class UserRuleSet implements RuleSet {
 	
 	private void existRule(UserController userC) throws RuleException {
 		String username = userC.getUsernameField().getText();
-		for (User user : SystemController.getInstance().getLibrary().getUsers()) {
-			if(user.getUsername().equals(username)){
-				throw new RuleException("Username already exists");
-			}
+		User user = SystemController.getInstance().getLibrary().getUser(username);
+		if(user!=null){
+			throw new RuleException("Username already exists");
 		}
 	}
 	
