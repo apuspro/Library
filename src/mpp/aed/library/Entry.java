@@ -2,10 +2,13 @@ package mpp.aed.library;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class Entry implements Serializable {
-    private boolean checkedout;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6578228472303519129L;
+	private boolean checkedout;
     private LocalDate checkoutDate;
     private LocalDate dueDate;
     private CopyBook copyBook;

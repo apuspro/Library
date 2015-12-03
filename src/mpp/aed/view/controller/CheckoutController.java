@@ -1,8 +1,6 @@
 package mpp.aed.view.controller;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,7 +17,6 @@ import mpp.aed.library.MemberException;
 import mpp.aed.library.SuperUser;
 import mpp.aed.library.SystemController;
 import mpp.aed.library.User;
-import mpp.aed.view.rulsets.CheckoutRuleSet;
 import mpp.aed.view.rulsets.RuleException;
 import mpp.aed.view.rulsets.RuleSet;
 import mpp.aed.view.rulsets.RuleSetFactory;

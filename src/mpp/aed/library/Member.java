@@ -3,6 +3,10 @@ package mpp.aed.library;
 import java.io.Serializable;
 
 public class Member implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7277902882356580771L;
 	private int memberId;
 	private String firstName;
 	private String lastName;

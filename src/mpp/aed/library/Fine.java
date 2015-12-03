@@ -5,7 +5,11 @@ import java.time.LocalTime;
 
 public class Fine implements Serializable { 
     
-    private int number;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8616708022221252647L;
+	private int number;
     private double amount;
     private int daysLate;
     private LocalTime dateOfReturn;

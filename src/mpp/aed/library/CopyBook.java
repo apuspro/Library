@@ -3,7 +3,11 @@ package mpp.aed.library;
 import java.io.Serializable;
 
 public class CopyBook implements Serializable{
-    private int copyNumber;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8517552735563912947L;
+	private int copyNumber;
     private boolean available = true;
     private final Book original;
 

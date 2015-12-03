@@ -17,7 +17,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import mpp.aed.application.Main;
 import mpp.aed.library.Library;
-import mpp.aed.view.rulsets.RecordsRuleSet;
 import mpp.aed.view.rulsets.RuleException;
 import mpp.aed.view.rulsets.RuleSet;
 import mpp.aed.view.rulsets.RuleSetFactory;

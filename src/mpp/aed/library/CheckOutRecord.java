@@ -1,13 +1,16 @@
 package mpp.aed.library;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CheckOutRecord implements Serializable {
     
-    private final List<Entry> entries = new ArrayList<>();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4194472965517349967L;
+	private final List<Entry> entries = new ArrayList<>();
     private final List<Fine> fines = new ArrayList<>();
 
     public List<Entry> getEntries() {
