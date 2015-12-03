@@ -1,1 +1,7 @@
 /bin/
+/build/
+/dist/
+/lib/
+/manifest.mf
+/nbbuild.xml
+/nbproject/

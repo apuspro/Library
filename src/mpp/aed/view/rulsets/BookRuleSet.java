@@ -54,7 +54,7 @@ final public class BookRuleSet implements RuleSet {
 	
 	private void existRule(BookController book) throws RuleException {
 		String aISBN = book.getISBNField().getText();
-		Book tempBook = new Book(Integer.parseInt(aISBN));
+		Book tempBook = new Book(Long.parseLong(aISBN));
 		if(SystemController.getInstance().getLibrary().getBooks().contains(tempBook)) {
 			throw new RuleException("Book already exists");
 		}

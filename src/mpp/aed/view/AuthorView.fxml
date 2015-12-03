@@ -83,9 +83,9 @@
                <children>
                   <TableView fx:id="authorTable" layoutX="19.0" layoutY="4.0" prefHeight="407.0" prefWidth="392.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="tNameColumn" prefWidth="131.0" resizable="false" text="Name" />
-                      <TableColumn fx:id="tAddressColumn" minWidth="0.0" prefWidth="119.0" resizable="false" text="Address" />
-                        <TableColumn fx:id="tPhoneColumn" prefWidth="117.0" resizable="false" text="Phone" />
+                      <TableColumn fx:id="tNameColumn" prefWidth="142.0" resizable="false" text="Name" />
+                      <TableColumn fx:id="tAddressColumn" minWidth="0.0" prefWidth="131.0" resizable="false" text="Address" />
+                        <TableColumn fx:id="tPhoneColumn" prefWidth="109.0" resizable="false" text="Phone" />
                     </columns>
                      <opaqueInsets>
                         <Insets />

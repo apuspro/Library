@@ -11,7 +11,7 @@ public final class Book implements Serializable {
 	private static final long serialVersionUID = 1102079640455412470L;
 	private int copyNumber=1;
     private String title;
-    private int ISBN;
+    private long ISBN;
     private int maxCheckoutDays;
     private final List<CopyBook> copies = new ArrayList<>();
     private final List<Author> authors = new ArrayList<>();
@@ -20,11 +20,11 @@ public final class Book implements Serializable {
         addCopyBook();
     }
     
-    public Book(int ISBN) {
+    public Book(long ISBN) {
     	this.ISBN = ISBN;
     }
 
-    public Book(String title, int ISBN, int maxCheckoutDays) {
+    public Book(String title, long ISBN, int maxCheckoutDays) {
         this.title = title;
         this.ISBN = ISBN;
         this.maxCheckoutDays = maxCheckoutDays;
@@ -39,11 +39,11 @@ public final class Book implements Serializable {
         this.title = title;
     }
 
-    public int getISBN() {
+    public long getISBN() {
         return ISBN;
     }
 
-    public void setISBN(int ISBN) {
+    public void setISBN(long ISBN) {
         this.ISBN = ISBN;
     }
 

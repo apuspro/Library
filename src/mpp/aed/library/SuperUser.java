@@ -21,5 +21,10 @@ public class SuperUser extends User {
 
     public Administrator getAdministrator() {
         return administrator;
-    }       
+    }
+    
+    @Override
+	public String toString(){
+		return "Super User ->"+this.getUsername()+" "+this.getPassword();
+	}
 }

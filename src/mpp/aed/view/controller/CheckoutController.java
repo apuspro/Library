@@ -55,7 +55,7 @@ public class CheckoutController {
         }        
         
         try {
-            boolean success = librarian.checkoutBook(Integer.parseInt(memberId), Integer.parseInt(isbn));
+            boolean success = librarian.checkoutBook(Integer.parseInt(memberId), Long.parseLong(isbn));
             if( !success ) {
                 throw new BookException("Not enough copies available");                
             }

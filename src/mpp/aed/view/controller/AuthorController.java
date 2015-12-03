@@ -69,6 +69,7 @@ public class AuthorController {
 			this.book.addAuthor(aAuthor);
 			
 			this.authorData.add(aAuthor);
+			authorTable.setItems(authorData);
 			
 			resultMsg.setFill(Color.GREEN);
 			resultMsg.setText("Author "+this.firstNameField.getText()+" Added");
@@ -93,7 +94,7 @@ public class AuthorController {
 	}
 	
 	public void setData(){
-		if(this.book.getAuthors()!=null || !this.book.getAuthors().isEmpty()){
+		if(this.book.getAuthors()!=null && !this.book.getAuthors().isEmpty()){
 			authorData.addAll(book.getAuthors());
 			authorTable.setItems(authorData);
 		}
