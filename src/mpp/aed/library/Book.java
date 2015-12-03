@@ -103,4 +103,9 @@ public final class Book implements Serializable {
 		}
 		return false;
 	}
+	
+	@Override
+	public String toString(){
+		return ISBN+" "+title+" CheckOutLenght:"+maxCheckoutDays;
+	}
 }

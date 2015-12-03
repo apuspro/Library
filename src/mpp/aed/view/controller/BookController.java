@@ -2,11 +2,15 @@ package mpp.aed.view.controller;
 
 import java.io.IOException;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -24,15 +28,28 @@ public class BookController {
 	@FXML
 	private TextField titleField;
 	@FXML
-	private TextField maxChecOutLengthField;
+	private ComboBox<String> maxChecOutLengthField;
 	@FXML
 	private TextField numberOfCopiesField;
 	@FXML
 	private Text resultMsg;
 	
+	private ObservableList<String> bOptions;
+	
 	private Book newBook = new Book();
 	
 	private Stage bookStage;
+	
+	@FXML
+	protected void initialize(){
+		bOptions = 
+			    FXCollections.observableArrayList(
+			        "7 days",
+			        "21 days"
+			    );
+		
+		maxChecOutLengthField.getItems().addAll(bOptions);
+    }
 	
 	@FXML
 	public void saveBook(){
@@ -43,7 +60,8 @@ public class BookController {
 			SystemController sController =  SystemController.getInstance();
 			this.newBook.setTitle(this.titleField.getText());
 			this.newBook.setISBN(Integer.parseInt(this.ISBNField.getText()));
-			this.newBook.setMaxCheckoutDays(Integer.parseInt(this.maxChecOutLengthField.getText()));
+			String numberOnly= this.maxChecOutLengthField.getValue().replaceAll("[^0-9]", "");
+			this.newBook.setMaxCheckoutDays(Integer.parseInt(numberOnly));
 			for (int i = 0; i < Integer.parseInt(numberOfCopiesField.getText())-1; i++) {
 				newBook.addCopyBook();
 			}
@@ -51,9 +69,11 @@ public class BookController {
 			sController.getLibrary().addBook(newBook);
 			sController.serialize(sController.getLibrary());
 			
+			resultMsg.setFill(Color.GREEN);
 			resultMsg.setText("Book "+this.titleField.getText()+" created");
 			System.out.println("Book "+this.titleField.getText()+" created");
 		}catch(RuleException e) {
+			resultMsg.setFill(Color.RED);
 			resultMsg.setText(e.getMessage());
 		}
 	}
@@ -103,7 +123,7 @@ public class BookController {
 		return titleField;
 	}
 
-	public TextField getMaxChecOutLengthField() {
+	public ComboBox<String> getMaxChecOutLengthField() {
 		return maxChecOutLengthField;
 	}
 
@@ -113,5 +133,13 @@ public class BookController {
 
 	public Book getNewBook() {
 		return newBook;
+	}
+	
+	@FXML
+	public void printBooks(){
+		System.out.println("--List of Books--");
+		for (Book book : SystemController.getInstance().getLibrary().getBooks()) {
+			System.out.println(book.toString());
+		}
 	}
 }

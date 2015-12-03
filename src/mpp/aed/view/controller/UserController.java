@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import mpp.aed.library.Administrator;
@@ -64,9 +65,12 @@ public class UserController {
 			Library aLibrary = SystemController.getInstance().getLibrary();
 			aLibrary.addUser(newUser);
 			SystemController.getInstance().serialize(aLibrary);
+			
+			resultMsg.setFill(Color.GREEN);
 			resultMsg.setText("User "+usernameField+" created");
 			System.out.println("User "+usernameField+" created");
 		}catch(RuleException e) {
+			resultMsg.setFill(Color.RED);
 			resultMsg.setText(e.getMessage());
 		}
 	}
@@ -74,6 +78,14 @@ public class UserController {
 	@FXML
 	public void cancelBtn(){
 		this.userStage.hide();
+	}
+	
+	@FXML
+	public void printUsers(){
+		System.out.println("--List of Users--");
+		for (User user : SystemController.getInstance().getLibrary().getUsers()) {
+			System.out.println(user.toString());
+		}
 	}
 
 	public void setUserStage(Stage userStage) {

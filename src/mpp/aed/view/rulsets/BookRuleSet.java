@@ -50,8 +50,8 @@ final public class BookRuleSet implements RuleSet {
 	}
 	
 	private void maxChkOutRule(BookController book) throws RuleException {
-		String maxChkOut = book.getMaxChecOutLengthField().getText();
-		if(maxChkOut == null || maxChkOut.equals("")){
+		String maxChkOut = book.getMaxChecOutLengthField().getValue();
+		if(maxChkOut == null || maxChkOut.contains("-")){
 			throw new RuleException("Max checkout length must be non empty");
 		}
 	}

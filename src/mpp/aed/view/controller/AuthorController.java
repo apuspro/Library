@@ -11,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -68,9 +69,12 @@ public class AuthorController {
 			this.book.addAuthor(aAuthor);
 			
 			this.authorData.add(aAuthor);
+			
+			resultMsg.setFill(Color.GREEN);
 			resultMsg.setText("Author "+this.firstNameField.getText()+" Added");
 			System.out.println("Author "+this.firstNameField.getText()+" Added");
 		}catch(RuleException e) {
+			resultMsg.setFill(Color.RED);
 			resultMsg.setText(e.getMessage());
 		}
 	}

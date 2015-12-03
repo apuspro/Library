@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -49,10 +50,12 @@ public class LoginController {
 	
 			if (sController.login(username, password)) {
 				//TODO Call the next Window
+				resultMsg.setFill(Color.GREEN);
 				resultMsg.setText("Login Successfully!");
 				sController.setCurrentUser(sController.getUser(username));
 				openMenu();
 			} else {
+				resultMsg.setFill(Color.RED);
 				resultMsg.setText("Login Failed");
 			}
 		}catch(RuleException e) {
