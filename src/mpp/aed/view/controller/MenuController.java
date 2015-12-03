@@ -36,7 +36,9 @@ public class MenuController {
 	@FXML
 	private MenuItem listBookMI;
  
-
+	@FXML
+	private MenuItem addCopyBookMI;
+	
 	private Stage primaryStage;
 	private Stage menuStage;
 	
@@ -47,11 +49,13 @@ public class MenuController {
 				sController.getCurrentUser() instanceof SuperUser){
 			addBookMI.setVisible(true);
 			addMemberMI.setVisible(true);
-                        searchBookMI.setVisible(true);
+            searchBookMI.setVisible(true);
+            addCopyBookMI.setVisible(true);
 		}else{
 			addBookMI.setVisible(false);
 			addMemberMI.setVisible(false);
-                        searchBookMI.setVisible(false);
+            searchBookMI.setVisible(false);
+            addCopyBookMI.setVisible(false);
 		}
 		
 		if(sController.getCurrentUser() instanceof Librarian || 
@@ -199,16 +203,16 @@ public class MenuController {
         try {
             page = (GridPane) loader.load();
 
-            Stage checkoutBookStage = new Stage();
-            checkoutBookStage.setTitle("Member View");
-            checkoutBookStage.initModality(Modality.WINDOW_MODAL);
-            checkoutBookStage.initOwner(this.menuStage);
+            Stage memberStage = new Stage();
+            memberStage.setTitle("Member View");
+            memberStage.initModality(Modality.WINDOW_MODAL);
+            memberStage.initOwner(this.menuStage);
             Scene scene = new Scene(page);
             scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
-            checkoutBookStage.setScene(scene);
-
+            memberStage.setScene(scene);
+            memberStage.setResizable(false);
             // Show the dialog and wait until the user closes it
-            checkoutBookStage.showAndWait();
+            memberStage.showAndWait();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -299,6 +303,31 @@ public class MenuController {
 
             // Show the dialog and wait until the user closes it
             onSearchBookStage.showAndWait();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+        
+    @FXML
+    public void openAddCopyOfBook() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("../view/AddCopyOfBook.fxml"));
+        GridPane page;
+        try {
+            page = (GridPane) loader.load();
+
+            Stage copyOfBookStage = new Stage();
+            copyOfBookStage.setTitle("Add Copy Of Book View");
+            copyOfBookStage.initModality(Modality.WINDOW_MODAL);
+            copyOfBookStage.initOwner(this.menuStage);
+            Scene scene = new Scene(page);
+            scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
+            copyOfBookStage.setScene(scene);
+            copyOfBookStage.setResizable(false);
+
+            // Show the dialog and wait until the user closes it
+            copyOfBookStage.showAndWait();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

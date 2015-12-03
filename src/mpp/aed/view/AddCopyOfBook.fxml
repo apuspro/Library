@@ -1,31 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.AddCopyOfBookController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="407.0" vgap="15.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.AddCopyOfBookController">
    <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="23.0" />
    </rowConstraints>
    <columnConstraints>
       <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints maxWidth="192.0" minWidth="10.0" prefWidth="137.0" />
+      <ColumnConstraints maxWidth="137.0" minWidth="10.0" prefWidth="137.0" />
+      <ColumnConstraints maxWidth="102.0" minWidth="10.0" prefWidth="30.0" />
    </columnConstraints>
    <children>
-      <Button fx:id="handleGetBookBtn" mnemonicParsing="false" text="Get Book" GridPane.columnIndex="2" />
-      <Label text="ISBN:" GridPane.halignment="RIGHT" />
-      <Label text="Title:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-      <Label fx:id="titleField" prefHeight="17.0" prefWidth="207.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-      <Label text="No. of Copies:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-      <Label fx:id="numberOfCopies" prefHeight="17.0" prefWidth="124.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Button fx:id="handleAddCopyBtn" mnemonicParsing="false" text="Add Copy" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Label fx:id="messageField" prefHeight="17.0" prefWidth="320.0" GridPane.columnSpan="3" GridPane.rowIndex="3" />
-      <TextField fx:id="isbnField" GridPane.columnIndex="1" />
+      <Button mnemonicParsing="false" onAction="#handleGetBookBtn" prefHeight="25.0" prefWidth="133.0" text="Get Book" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin></Button>
+      <Label text="ISBN:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+      <Label text="Title:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+      <Label fx:id="titleField" prefHeight="17.0" prefWidth="311.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin></Label>
+      <Label text="No. of Copies:" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+      <Label fx:id="numberOfCopies" prefHeight="17.0" prefWidth="124.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin></Label>
+      <Button mnemonicParsing="false" onAction="#handleAddCopyBtn" prefHeight="25.0" prefWidth="134.0" text="Add Copy" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin></Button>
+      <Label fx:id="messageField" prefHeight="23.0" prefWidth="404.0" GridPane.columnSpan="4" GridPane.rowIndex="4" />
+      <TextField fx:id="isbnField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin></TextField>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
    </children>
 </GridPane>

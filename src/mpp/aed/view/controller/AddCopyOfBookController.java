@@ -1,5 +1,6 @@
 package mpp.aed.view.controller;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import mpp.aed.library.*;
@@ -8,22 +9,30 @@ import mpp.aed.view.rulsets.RuleSetFactory;
 
 public class AddCopyOfBookController {
 
-	private TextField isbnField;
 	
+	@FXML
+	private TextField isbnField;
+
+	@FXML
 	private Label titleField;
 	
+	@FXML
 	private Label numberOfCopies;
 	
+	@FXML
 	private SystemController sysController;
 	
+	@FXML
 	private Label messageField;
 	
+	@FXML
 	private Book book;
 	
 	public AddCopyOfBookController() {
 		this.sysController = SystemController.getInstance();
 	}
 	
+	@FXML
 	public void handleGetBookBtn() {
 		try {
 			RuleSetFactory.getRuleSet(this).applyRules(this);
@@ -47,6 +56,7 @@ public class AddCopyOfBookController {
 		return isbnField;
 	}
 
+	@FXML
 	public void handleAddCopyBtn(){
 		if(book != null){
 			try {

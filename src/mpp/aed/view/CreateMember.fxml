@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="324.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.CreateMemberController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="517.0" vgap="15.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.CreateMemberController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="197.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="61.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="5.0" prefWidth="5.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="97.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="225.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="107.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="0.0" prefWidth="6.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
@@ -23,6 +23,7 @@
       <RowConstraints maxHeight="119.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
@@ -43,11 +44,14 @@
       <TextField fx:id="zipField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <TextField fx:id="phoneNumberField" onAction="#handleCreateBtn" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <Label fx:id="messageField" prefHeight="17.0" prefWidth="363.0" GridPane.columnSpan="2" />
-      <Button mnemonicParsing="false" onAction="#handleSearchBtn" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Button mnemonicParsing="false" onAction="#handleSearchBtn" prefHeight="25.0" prefWidth="101.0" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin></Button>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
          <children>
-            <Button fx:id="btnSave" mnemonicParsing="false" text="Save" />
-            <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#handleCancelBtn" text="Cancel">
+            <Button fx:id="btnSave" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Save" />
+            <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#handleCancelBtn" prefHeight="25.0" prefWidth="109.0" text="Cancel">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>

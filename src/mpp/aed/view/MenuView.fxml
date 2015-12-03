@@ -24,7 +24,7 @@
                   <MenuItem fx:id="addUserMI" mnemonicParsing="false" onAction="#openUserView" text="Manage Users" />
                   <MenuItem fx:id="addMemberMI" mnemonicParsing="false" onAction="#openCreateMember" text="Add/Edit Member" />
                   <MenuItem fx:id="addBookMI" mnemonicParsing="false" onAction="#openAddBook" text="Add/Edit Book" />
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="addCopyBookMI" mnemonicParsing="false" onAction="#openAddCopyOfBook" text="Add Copy Of Book" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

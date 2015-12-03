@@ -1,8 +1,12 @@
 package mpp.aed.view.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,7 +16,7 @@ import mpp.aed.library.SystemController;
 import mpp.aed.view.rulsets.RuleException;
 import mpp.aed.view.rulsets.RuleSetFactory;
 
-public class CreateMemberController {
+public class CreateMemberController  implements Initializable {
 
 	@FXML
 	private TextField memberIdField;
@@ -43,15 +47,16 @@ public class CreateMemberController {
 	
 	private SystemController sysController;
 	
+	@FXML
 	private Button btnSave;
 	
+	@FXML
 	private Button btnCancel;
 	
 	private Member memberToEdit;
 	
 	public CreateMemberController() {
 		this.sysController = SystemController.getInstance();
-		setUpCreationViewMode();
 	}
 
 	private void setUpCreationViewMode() {
@@ -78,7 +83,7 @@ public class CreateMemberController {
 		this.memberIdField.setDisable(true);
 	}
 	
-	@FXML
+	
 	public void handleCreateBtn() {
 		try {
 			this.messageField.setText("");
@@ -115,6 +120,7 @@ public class CreateMemberController {
 		this.sysController.serialize(this.sysController.getLibrary());
 	}
 	
+	@FXML
 	public void handleSearchBtn(){
 		int memberId;
 		if(this.getMemberIdField().getText().isEmpty()){
@@ -148,6 +154,7 @@ public class CreateMemberController {
 		this.phoneNumberField.setText("" + this.memberToEdit.getPhoneNumber());
 	}
 	
+	@FXML
 	private void handleCancelBtn(){
 		this.setUpCreationViewMode();
 	}
@@ -197,5 +204,10 @@ public class CreateMemberController {
 
 	public Label getMessageField() {
 		return messageField;
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		setUpCreationViewMode();
 	}
 }
