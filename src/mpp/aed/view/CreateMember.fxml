@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.CreateMemberController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="324.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.aed.view.controller.CreateMemberController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="197.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="56.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="10.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="61.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="5.0" prefWidth="5.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
@@ -43,11 +43,11 @@
       <TextField fx:id="zipField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <TextField fx:id="phoneNumberField" onAction="#handleCreateBtn" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <Label fx:id="messageField" prefHeight="17.0" prefWidth="363.0" GridPane.columnSpan="2" />
-      <Button mnemonicParsing="false" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Button mnemonicParsing="false" onAction="#handleSearchBtn" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
          <children>
-            <Button mnemonicParsing="false" onAction="#handleCreateBtn" text="Save" />
-            <Button mnemonicParsing="false" text="Cancel">
+            <Button fx:id="btnSave" mnemonicParsing="false" text="Save" />
+            <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#handleCancelBtn" text="Cancel">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>

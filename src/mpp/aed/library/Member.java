@@ -10,6 +10,34 @@ public class Member implements Serializable {
 	private String city;
 	private String state;
 	private String zip;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 	private long phoneNumber;
 	private CheckOutRecord checkOutRecord = new CheckOutRecord();
 	
