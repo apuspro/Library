@@ -5,7 +5,6 @@
  */
 package mpp.aed.view.rulsets;
 
-import mpp.aed.view.controller.BookController;
 import mpp.aed.view.controller.SearchBookController;
 
 /**
