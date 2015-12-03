@@ -91,7 +91,7 @@ public class Library implements Serializable {
         return false;
     }
     
-    public Book getBookByISBN(int ISBN) {
+    public Book getBookByISBN(long ISBN) {
         for( Book book : books ) {
             if( book.getISBN() == ISBN ) {
                 return book;

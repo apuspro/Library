@@ -18,14 +18,14 @@ public class Librarian extends User {
         return null;
     }
 
-    public boolean checkoutBook(int memberId, int ISDN) throws MemberException,BookException {
+    public boolean checkoutBook(int memberId, long ISBN) throws MemberException,BookException {
         Library library = Library.getInstance();
         Member member = library.getMemberById(memberId);
         if( member == null ) {
             throw new MemberException("This member is not exists in member list");
         }
         
-        Book book = library.getBookByISBN(ISDN);
+        Book book = library.getBookByISBN(ISBN);
         if( book == null ) {
             throw new BookException("This book is not exists in this library");
         }
@@ -49,4 +49,9 @@ public class Librarian extends User {
         
         return true;
     }
+    
+    @Override
+	public String toString(){
+		return "Librarian ->"+this.getUsername()+" "+this.getPassword();
+	}
 }

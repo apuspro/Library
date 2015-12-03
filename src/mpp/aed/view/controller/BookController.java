@@ -63,7 +63,7 @@ public class BookController {
 			
 			SystemController sController =  SystemController.getInstance();
 			this.newBook.setTitle(this.titleField.getText());
-			this.newBook.setISBN(Integer.parseInt(this.ISBNField.getText()));
+			this.newBook.setISBN(Long.parseLong(this.ISBNField.getText()));
 			String numberOnly= this.maxChecOutLengthField.getValue().replaceAll("[^0-9]", "");
 			this.newBook.setMaxCheckoutDays(Integer.parseInt(numberOnly));
 			for (int i = 0; i < Integer.parseInt(numberOfCopiesField.getText())-1; i++) {
@@ -155,7 +155,7 @@ public class BookController {
 		try{
 			resultMsg.setText("");
 			((BookRuleSet)bookRules).applyRulesSearch(this);
-			Book tempBook = new Book(Integer.parseInt(ISBNField.getText()));
+			Book tempBook = new Book(Long.parseLong(ISBNField.getText()));
 			int index = SystemController.getInstance().getLibrary().getBooks().lastIndexOf(tempBook);
 			tempBook = SystemController.getInstance().getLibrary().getBooks().get(index);
 			
@@ -167,6 +167,7 @@ public class BookController {
 			}else{
 				maxChecOutLengthField.getSelectionModel().select(1);
 			}
+			numberOfCopiesField.setEditable(false);
 			numberOfCopiesField.setText(tempBook.getNumberOfCopies()+"");
 			
 			this.newBook = tempBook;
@@ -189,5 +190,7 @@ public class BookController {
 			this.newBook = new Book();
 			resultMsg.setText("");
 			ISBNField.setEditable(true);
+			numberOfCopiesField.setEditable(true);
 	}
+
 }

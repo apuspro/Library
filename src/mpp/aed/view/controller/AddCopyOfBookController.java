@@ -27,7 +27,7 @@ public class AddCopyOfBookController {
 	public void handleGetBookBtn() {
 		try {
 			RuleSetFactory.getRuleSet(this).applyRules(this);
-			book = this.sysController.getLibrary().getBookByISBN(Integer.parseInt(this.isbnField.getText()));
+			book = this.sysController.getLibrary().getBookByISBN(Long.parseLong(this.isbnField.getText()));
 			if(book != null){
 				this.titleField.setText(book.getTitle());
 				this.numberOfCopies.setText(""+book.getNumberOfCopies());

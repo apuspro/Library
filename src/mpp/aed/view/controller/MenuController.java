@@ -189,7 +189,7 @@ public class MenuController {
             page = (GridPane) loader.load();
 
             Stage checkoutBookStage = new Stage();
-            checkoutBookStage.setTitle("Create Member View");
+            checkoutBookStage.setTitle("Member View");
             checkoutBookStage.initModality(Modality.WINDOW_MODAL);
             checkoutBookStage.initOwner(this.menuStage);
             Scene scene = new Scene(page);
@@ -219,12 +219,42 @@ public class MenuController {
 			Scene scene = new Scene(page);
 			scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
 			userStage.setScene(scene);
+			userStage.setResizable(false);
 			
 			UserController controller = loader.getController();
 			controller.setUserStage(userStage);
 	
 			// Show the dialog and wait until the user closes it
 			userStage.showAndWait();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+    
+    @FXML
+    public void openListBook(){
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../view/ListBooksView.fxml"));
+		AnchorPane page;
+		try {
+			page = (AnchorPane) loader.load();
+		
+			Stage listStage = new Stage();
+			listStage.setTitle("List Books View");
+			listStage.initModality(Modality.WINDOW_MODAL);
+			listStage.initOwner(this.menuStage);
+			Scene scene = new Scene(page);
+			scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
+			listStage.setScene(scene);
+			listStage.setResizable(false);
+			
+			ListBooksController controller = loader.getController();
+			controller.setListBooksStage(listStage);
+			controller.setData();
+	
+			// Show the dialog and wait until the user closes it
+			listStage.showAndWait();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -67,8 +67,8 @@ public class UserController {
 			SystemController.getInstance().serialize(aLibrary);
 			
 			resultMsg.setFill(Color.GREEN);
-			resultMsg.setText("User "+usernameField+" created");
-			System.out.println("User "+usernameField+" created");
+			resultMsg.setText("User "+usernameField.getText()+" created");
+			System.out.println("User "+usernameField.getText()+" created");
 		}catch(RuleException e) {
 			resultMsg.setFill(Color.RED);
 			resultMsg.setText(e.getMessage());
