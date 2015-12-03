@@ -16,6 +16,7 @@ public class RecordsRuleSet implements RuleSet{
     @Override
     public void applyRules(Object ob) throws RuleException {
         MemberController mc = (MemberController)ob;
+        memberIdRule(mc);
     }
     
     private void memberIdRule(MemberController cc) throws RuleException {

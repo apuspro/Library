@@ -8,6 +8,7 @@ import mpp.aed.view.controller.BookController;
 import mpp.aed.view.controller.CheckoutController;
 import mpp.aed.view.controller.CreateMemberController;
 import mpp.aed.view.controller.LoginController;
+import mpp.aed.view.controller.MemberController;
 import mpp.aed.view.controller.UserController;
 
 final public class RuleSetFactory {
@@ -21,6 +22,7 @@ final public class RuleSetFactory {
 		map.put(UserController.class, new UserRuleSet());
 		map.put(AuthorController.class, new AuthorRuleSet());
                 map.put(CheckoutController.class, new CheckoutRuleSet());
+                map.put(MemberController.class, new RecordsRuleSet());
 	}
 	public static RuleSet getRuleSet(Object c) {
 		Class<? extends Object> cl = c.getClass();

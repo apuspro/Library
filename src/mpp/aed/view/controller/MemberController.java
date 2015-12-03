@@ -11,9 +11,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import mpp.aed.application.Main;
+import mpp.aed.library.Library;
+import mpp.aed.view.rulsets.RecordsRuleSet;
+import mpp.aed.view.rulsets.RuleException;
+import mpp.aed.view.rulsets.RuleSet;
+import mpp.aed.view.rulsets.RuleSetFactory;
 
 /**
  *
@@ -24,10 +31,28 @@ public class MemberController {
 
     @FXML
     private TextField memberIdField;
+    @FXML
+    private Text resultMsg;
     
     @FXML
     public void onViewCheckoutRecordsPerformed() {
+        
         System.out.println("processing checkout records..., member id: "+memberIdField.getText());
+        RuleSet rrs = RuleSetFactory.getRuleSet(this);
+        try{
+            rrs.applyRules(this);
+            if( Library.getInstance().getMemberById(Integer.parseInt(memberIdField.getText())) == null ) {
+                throw new RuleException("There is no member with the id: "+memberIdField.getText());
+            }
+        } catch( RuleException ex ) {
+            this.resultMsg.setFill(Color.RED);
+            this.resultMsg.setText(ex.getMessage());
+            return;
+        }
+        openMembersCheckoutRecords();       
+    }
+    
+    public void openMembersCheckoutRecords() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("../view/MemberCheckoutRecords.fxml"));
         AnchorPane page;
@@ -50,10 +75,6 @@ public class MemberController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
-    
-    public void openMembersCheckoutRecords() {
-        
     }
     
     public Stage getParentStage() {

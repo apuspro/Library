@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import mpp.aed.application.Main;
@@ -17,6 +19,10 @@ import mpp.aed.library.MemberException;
 import mpp.aed.library.SuperUser;
 import mpp.aed.library.SystemController;
 import mpp.aed.library.User;
+import mpp.aed.view.rulsets.CheckoutRuleSet;
+import mpp.aed.view.rulsets.RuleException;
+import mpp.aed.view.rulsets.RuleSet;
+import mpp.aed.view.rulsets.RuleSetFactory;
 
 public class CheckoutController {
     
@@ -24,13 +30,21 @@ public class CheckoutController {
     private TextField memberIdField;
     @FXML
     private TextField isbnField;
+    @FXML
+    private Text resultMsg;
     
     @FXML
     public void onCheckoutPerformed() {
         String memberId = memberIdField.getText();
         String isbn = isbnField.getText();
         
-        
+        RuleSet rule = RuleSetFactory.getRuleSet(this);
+        try{
+            rule.applyRules(this);
+        } catch(RuleException re) {
+            this.resultMsg.setFill(Color.RED);
+            this.resultMsg.setText(re.getMessage());
+        }
         
         User user = SystemController.getInstance().getCurrentUser();
         Librarian librarian = null;
@@ -41,13 +55,22 @@ public class CheckoutController {
         }        
         
         try {
-            librarian.checkoutBook(Integer.parseInt(memberId), Integer.parseInt(isbn));
+            boolean success = librarian.checkoutBook(Integer.parseInt(memberId), Integer.parseInt(isbn));
+            if( !success ) {
+                throw new BookException("Not enough copies available");                
+            }
         } catch (MemberException ex) {
-            Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
+            resultMsg.setFill(Color.RED);
+            resultMsg.setText(ex.getMessage()); 
+            return;
         } catch (BookException ex) {
-            Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
+            resultMsg.setFill(Color.RED);
+            resultMsg.setText(ex.getMessage());
+            return;
         }
         
+        resultMsg.setFill(Color.GREEN);
+        resultMsg.setText("The book successfully checked out");
         onViewCheckoutRecordsPerformed();
         System.out.println("member id: "+memberId+", isbn: "+isbn);
     } 
