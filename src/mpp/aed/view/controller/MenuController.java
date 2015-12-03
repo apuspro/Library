@@ -29,6 +29,8 @@ public class MenuController {
 	private MenuItem memberRecordsMI;
 	@FXML
 	private MenuItem addMemberMI;
+	@FXML
+	private MenuItem listBookMI;
 
 	private Stage primaryStage;
 	private Stage menuStage;

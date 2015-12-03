@@ -14,13 +14,13 @@
             <items>
                   <MenuItem fx:id="memberRecordsMI" mnemonicParsing="false" onAction="#openMembersId" text="Member's checkout records" />
                   <MenuItem fx:id="chkOutBookMI" mnemonicParsing="false" onAction="#openCheckoutBook" text="Checkout book" />
-                  <MenuItem mnemonicParsing="false" onAction="#openListBook" text="List Books" />
+                  <MenuItem fx:id="listBookMI" mnemonicParsing="false" onAction="#openListBook" text="List Books" />
               <MenuItem mnemonicParsing="false" onAction="#closeBtn" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-                  <MenuItem fx:id="addUserMI" mnemonicParsing="false" onAction="#openUserView" text="Create User" />
+                  <MenuItem fx:id="addUserMI" mnemonicParsing="false" onAction="#openUserView" text="Manage Users" />
                   <MenuItem fx:id="addMemberMI" mnemonicParsing="false" onAction="#openCreateMember" text="Add/Edit Member" />
                   <MenuItem fx:id="addBookMI" mnemonicParsing="false" onAction="#openAddBook" text="Add/Edit Book" />
               <MenuItem mnemonicParsing="false" text="Delete" />
