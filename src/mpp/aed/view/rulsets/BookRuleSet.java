@@ -27,6 +27,13 @@ final public class BookRuleSet implements RuleSet {
 		ISBNRuleSearch(bookController);
 	}
 	
+	public void applyRulesSave(Object ob) throws RuleException {
+		BookController bookController = (BookController)ob;
+		titleRule(bookController);
+		maxChkOutRule(bookController);
+		authorRule(bookController);
+	}
+	
 	private void ISBNRule(BookController book) throws RuleException {
 		String aISBN = book.getISBNField().getText();
 		if(aISBN == null || aISBN.equals("")){

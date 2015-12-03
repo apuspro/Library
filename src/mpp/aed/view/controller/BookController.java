@@ -41,10 +41,12 @@ public class BookController {
 	
 	private Stage bookStage;
 	
+	private boolean editMode = false;
+	
 	@FXML
 	protected void initialize(){
 		
-		printBooks();
+		SystemController.getInstance().printBooks();
 		
 		bOptions = 
 			    FXCollections.observableArrayList(
@@ -59,7 +61,11 @@ public class BookController {
 	public void saveBook(){
 		RuleSet bookRules = RuleSetFactory.getRuleSet(this);
 		try{
-			bookRules.applyRules(this);
+			if(this.editMode){
+				((BookRuleSet)bookRules).applyRulesSave(this);
+			}else{
+				bookRules.applyRules(this);
+			}
 			
 			SystemController sController =  SystemController.getInstance();
 			this.newBook.setTitle(this.titleField.getText());
@@ -74,6 +80,7 @@ public class BookController {
 			sController.serialize(sController.getLibrary());
 			
 			resultMsg.setFill(Color.GREEN);
+			cleanFields();
 			resultMsg.setText("Book "+this.titleField.getText()+" saved");
 			System.out.println("Book "+this.titleField.getText()+" saved");
 		}catch(RuleException e) {
@@ -142,14 +149,6 @@ public class BookController {
 	}
 	
 	@FXML
-	public void printBooks(){
-		System.out.println("--List of Books--");
-		for (Book book : SystemController.getInstance().getLibrary().getBooks()) {
-			System.out.println(book.toString());
-		}
-	}
-	
-	@FXML
 	public void searchBook(){
 		RuleSet bookRules = RuleSetFactory.getRuleSet(this);
 		try{
@@ -173,6 +172,7 @@ public class BookController {
 			this.newBook = tempBook;
 			resultMsg.setFill(Color.BLUE);
 			resultMsg.setText("Edit Mode");
+			editMode = true;
 		}catch(RuleException e) {
 			resultMsg.setFill(Color.RED);
 			resultMsg.setText(e.getMessage());
@@ -191,6 +191,7 @@ public class BookController {
 			resultMsg.setText("");
 			ISBNField.setEditable(true);
 			numberOfCopiesField.setEditable(true);
+			editMode = false;
 	}
 
 }
