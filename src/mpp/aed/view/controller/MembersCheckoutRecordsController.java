@@ -123,6 +123,23 @@ public class MembersCheckoutRecordsController {
     public void onBackPerformed() {
         this.selfStage.hide();
     }
+    
+    @FXML
+    public void onPrintPerformed() {
+        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.printf("|%40s|", "Title");
+        System.out.printf("%12s|", "ISBN");
+        System.out.printf("%15s|", "Checkout date");
+        System.out.printf("%15s|\n", "Due date");
+        System.out.println("---------------------------------------------------------------------------------------");
+        for( Record record : checkoutRecordsData ) {
+            System.out.printf("|%40s|", record.title);
+            System.out.printf("%12s|", record.isbn);
+            System.out.printf("%15s|", record.checkoutDate);
+            System.out.printf("%15s|\n", record.dueDate);
+            System.out.println("---------------------------------------------------------------------------------------");            
+        }
+    }
 
     public Stage getParentStage() {
         return parentStage;

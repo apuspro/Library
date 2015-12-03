@@ -16,6 +16,6 @@
       </TableView>
       <Label layoutX="264.0" layoutY="14.0" text="checkout records" />
       <Button layoutX="317.0" layoutY="351.0" mnemonicParsing="false" onAction="#onBackPerformed" text="Cancel" />
-      <Button layoutX="258.0" layoutY="351.0" mnemonicParsing="false" text="Print" />
+      <Button layoutX="258.0" layoutY="351.0" mnemonicParsing="false" onAction="#onPrintPerformed" text="Print" />
    </children>
 </AnchorPane>

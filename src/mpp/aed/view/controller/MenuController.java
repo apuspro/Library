@@ -29,6 +29,8 @@ public class MenuController {
 	private MenuItem memberRecordsMI;
 	@FXML
 	private MenuItem addMemberMI;
+        @FXML
+        private MenuItem searchBookMI;
 
 	private Stage primaryStage;
 	private Stage menuStage;
@@ -40,18 +42,22 @@ public class MenuController {
 				sController.getCurrentUser() instanceof SuperUser){
 			addBookMI.setVisible(true);
 			addMemberMI.setVisible(true);
+                        searchBookMI.setVisible(true);
 		}else{
 			addBookMI.setVisible(false);
 			addMemberMI.setVisible(false);
+                        searchBookMI.setVisible(false);
 		}
 		
 		if(sController.getCurrentUser() instanceof Librarian || 
 				sController.getCurrentUser() instanceof SuperUser){
 			chkOutBookMI.setVisible(true);
 			memberRecordsMI.setVisible(true);
+                        searchBookMI.setVisible(true);
 		}else{
 			chkOutBookMI.setVisible(false);
 			memberRecordsMI.setVisible(false);
+                        searchBookMI.setVisible(false);
 		}
 		
 		if(sController.getCurrentUser() instanceof SuperUser){
@@ -236,4 +242,31 @@ public class MenuController {
     	System.out.println("Application Closed by close Menu Item!");
         System.exit(0);
 	}
+        
+        @FXML
+    public void onSearchBook() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("../view/SearchBookView.fxml"));
+        AnchorPane page;
+        try {
+            page = (AnchorPane) loader.load();
+
+            Stage onSearchBookStage = new Stage();
+            onSearchBookStage.setTitle("Member's checkout records");
+            onSearchBookStage.initModality(Modality.WINDOW_MODAL);
+            onSearchBookStage.initOwner(this.menuStage);
+            SearchBookController controller = loader.getController();
+            controller.setParentStage(onSearchBookStage);
+            controller.setSelfStage(onSearchBookStage);
+            Scene scene = new Scene(page);
+            scene.getStylesheets().add(getClass().getResource("../../application/DarkTheme.css").toExternalForm());
+            onSearchBookStage.setScene(scene);
+
+            // Show the dialog and wait until the user closes it
+            onSearchBookStage.showAndWait();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 }
