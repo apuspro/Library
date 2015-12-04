@@ -32,18 +32,19 @@ public class SearchBookController {
         try {
             RuleSet rs = RuleSetFactory.getRuleSet(this);
             rs.applyRules(this);
+        
+	        Library library = Library.getInstance();
+	        if( library.getBookByISBN(Long.parseLong(isbnField.getText().trim())) != null ) {
+	            resultMsg.setFill(Color.GREEN);
+	            resultMsg.setText("A book with ISBN: "+isbnField.getText().trim()+" exists");
+	        } else {
+	            resultMsg.setFill(Color.RED);
+	            resultMsg.setText("A book with ISBN: "+isbnField.getText().trim()+" doesn't exists");
+	        }    
         } catch(RuleException ex) {
             resultMsg.setFill(Color.RED);
             resultMsg.setText(ex.getMessage());
         }
-        Library library = Library.getInstance();
-        if( library.getBookByISBN(Long.parseLong(isbnField.getText().trim())) != null ) {
-            resultMsg.setFill(Color.GREEN);
-            resultMsg.setText("A book with ISBN: "+isbnField.getText().trim()+" exists");
-        } else {
-            resultMsg.setFill(Color.RED);
-            resultMsg.setText("A book with ISBN: "+isbnField.getText().trim()+" doesn't exists");
-        }        
     }
     
     @FXML

@@ -17,7 +17,7 @@ final public class LoginRuleSet implements RuleSet {
 	private void usernameRule(LoginController login) throws RuleException {
 		String username = login.getUsernameField().getText();
 		if(username == null || username.equals("")){
-			throw new RuleException("ID must be non empty");
+			throw new RuleException("Username must be non empty");
 		}else{
 			if(username.length()<5){
 				throw new RuleException("Username should have at least 5 characters");

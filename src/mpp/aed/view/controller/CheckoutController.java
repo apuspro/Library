@@ -38,38 +38,38 @@ public class CheckoutController {
         RuleSet rule = RuleSetFactory.getRuleSet(this);
         try{
             rule.applyRules(this);
+        
+	        User user = SystemController.getInstance().getCurrentUser();
+	        Librarian librarian = null;
+	        if( user instanceof Librarian ) {
+	            librarian = (Librarian)user;
+	        } else if( user instanceof  SuperUser ) {
+	            librarian = ((SuperUser)user).getLibrarian();
+	        }        
+        
+	        try {
+	            boolean success = librarian.checkoutBook(Integer.parseInt(memberId), Long.parseLong(isbn));
+	            if( !success ) {
+	                throw new BookException("Not enough copies available");                
+	            }
+	        } catch (MemberException ex) {
+	            resultMsg.setFill(Color.RED);
+	            resultMsg.setText(ex.getMessage()); 
+	            return;
+	        } catch (BookException ex) {
+	            resultMsg.setFill(Color.RED);
+	            resultMsg.setText(ex.getMessage());
+	            return;
+	        }
+        
+	        resultMsg.setFill(Color.GREEN);
+	        resultMsg.setText("The book successfully checked out");
+	        onViewCheckoutRecordsPerformed();
+	        System.out.println("member id: "+memberId+", isbn: "+isbn);
         } catch(RuleException re) {
             this.resultMsg.setFill(Color.RED);
             this.resultMsg.setText(re.getMessage());
         }
-        
-        User user = SystemController.getInstance().getCurrentUser();
-        Librarian librarian = null;
-        if( user instanceof Librarian ) {
-            librarian = (Librarian)user;
-        } else if( user instanceof  SuperUser ) {
-            librarian = ((SuperUser)user).getLibrarian();
-        }        
-        
-        try {
-            boolean success = librarian.checkoutBook(Integer.parseInt(memberId), Long.parseLong(isbn));
-            if( !success ) {
-                throw new BookException("Not enough copies available");                
-            }
-        } catch (MemberException ex) {
-            resultMsg.setFill(Color.RED);
-            resultMsg.setText(ex.getMessage()); 
-            return;
-        } catch (BookException ex) {
-            resultMsg.setFill(Color.RED);
-            resultMsg.setText(ex.getMessage());
-            return;
-        }
-        
-        resultMsg.setFill(Color.GREEN);
-        resultMsg.setText("The book successfully checked out");
-        onViewCheckoutRecordsPerformed();
-        System.out.println("member id: "+memberId+", isbn: "+isbn);
     } 
     
     public void onViewCheckoutRecordsPerformed() {

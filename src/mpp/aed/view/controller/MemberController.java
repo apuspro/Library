@@ -48,7 +48,8 @@ public class MemberController {
             this.resultMsg.setText(ex.getMessage());
             return;
         }
-        openMembersCheckoutRecords();       
+        openMembersCheckoutRecords();
+        this.resultMsg.setText("");
     }
     
     @FXML

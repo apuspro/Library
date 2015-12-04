@@ -51,8 +51,8 @@ final public class AuthorRuleSet implements RuleSet {
 		} catch (NumberFormatException e) {
 			throw new RuleException("Phone must be numeric");
 		}
-		if(phone.length()<10){
-			throw new RuleException("Phone must be a number of at least 10 digits");
+		if(phone.length()<7){
+			throw new RuleException("Phone must be a number of at least 7 digits");
 		}
 	}
 	
