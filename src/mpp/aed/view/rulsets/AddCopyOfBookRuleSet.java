@@ -17,8 +17,13 @@ final public class AddCopyOfBookRuleSet implements RuleSet {
 		if(aISBN == null || aISBN.equals("")){
 			throw new RuleException("ISBN must be non empty");
 		}else{
+			try {
+				Long.parseLong(aISBN);
+			} catch (NumberFormatException e) {
+				throw new RuleException("ISBN must be numeric");
+			}
 			if(aISBN.length()!=10){
-				throw new RuleException("ISBN should have at lenght of 10 characters");
+				throw new RuleException("ISBN should have a lenght of 10 digits");
 			}
 		}
 	}

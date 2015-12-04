@@ -22,9 +22,9 @@ final public class RuleSetFactory {
 		map.put(BookController.class, new BookRuleSet());
 		map.put(UserController.class, new UserRuleSet());
 		map.put(AuthorController.class, new AuthorRuleSet());
-                map.put(CheckoutController.class, new CheckoutRuleSet());
-                map.put(MemberController.class, new RecordsRuleSet());
-                map.put(SearchBookController.class, new ISBNRuleSet());
+        map.put(CheckoutController.class, new CheckoutRuleSet());
+        map.put(MemberController.class, new RecordsRuleSet());
+        map.put(SearchBookController.class, new ISBNRuleSet());
 	}
 	public static RuleSet getRuleSet(Object c) {
 		Class<? extends Object> cl = c.getClass();

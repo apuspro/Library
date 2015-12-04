@@ -18,6 +18,7 @@ final public class BookRuleSet implements RuleSet {
 		existRule(bookController);
 		titleRule(bookController);
 		maxChkOutRule(bookController);
+		noCopiesRule(bookController);
 		authorRule(bookController);
 		
 	}
@@ -60,8 +61,6 @@ final public class BookRuleSet implements RuleSet {
 		} catch (NumberFormatException e) {
 			throw new RuleException("ISBN must be numeric");
 		}
-		
-		//SystemController.getInstance().
 	}
 	
 	private void titleRule(BookController book) throws RuleException {
@@ -84,6 +83,19 @@ final public class BookRuleSet implements RuleSet {
 		if(maxChkOut == null || maxChkOut.contains("-")){
 			throw new RuleException("Max checkout length must be non empty");
 		}
+	}
+	
+	private void noCopiesRule(BookController book) throws RuleException {
+		String aNcopies = book.getNumberOfCopiesField().getText();
+		try {
+			Integer.parseInt(aNcopies);
+		} catch (NumberFormatException e) {
+			throw new RuleException("Number of copies must be numeric");
+		}
+		if(aNcopies.length()>9){
+			throw new RuleException("Maximum number of copies exceeded");
+		}
+		
 	}
 	
 	private void authorRule(BookController book) throws RuleException {
