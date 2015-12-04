@@ -13,6 +13,6 @@ public class Administrator extends User {
     
     @Override
 	public String toString(){
-		return "Administrator ->"+this.getUsername()+" "+this.getPassword();
+		return String.format("|%15s|","Administrator")+String.format("%15s|",this.getUsername())+String.format("%15s|\n",this.getPassword());
 	}
 }

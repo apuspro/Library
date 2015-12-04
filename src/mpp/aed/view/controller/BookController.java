@@ -46,8 +46,6 @@ public class BookController {
 	@FXML
 	protected void initialize(){
 		
-		SystemController.getInstance().printBooks();
-		
 		bOptions = 
 			    FXCollections.observableArrayList(
 			        "7 days",

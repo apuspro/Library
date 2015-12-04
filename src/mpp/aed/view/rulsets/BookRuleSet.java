@@ -60,6 +60,8 @@ final public class BookRuleSet implements RuleSet {
 		} catch (NumberFormatException e) {
 			throw new RuleException("ISBN must be numeric");
 		}
+		
+		//SystemController.getInstance().
 	}
 	
 	private void titleRule(BookController book) throws RuleException {

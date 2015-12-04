@@ -57,7 +57,6 @@ public class CreateMemberController  implements Initializable {
 	
 	public CreateMemberController() {
 		this.sysController = SystemController.getInstance();
-		this.sysController.printMembers();
 	}
 
 	private void setUpCreationViewMode() {
@@ -211,4 +210,9 @@ public class CreateMemberController  implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpCreationViewMode();
 	}
+	
+    @FXML
+    public void printMembers(){
+    	SystemController.getInstance().printMembers();
+    }
 }

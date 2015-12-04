@@ -51,6 +51,7 @@ public class MemberController {
         openMembersCheckoutRecords();       
     }
     
+    @FXML
     public void openMembersCheckoutRecords() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("../view/MemberCheckoutRecords.fxml"));
@@ -86,5 +87,5 @@ public class MemberController {
 
     public TextField getMemberIdField() {
         return memberIdField;
-    }  
+    }
 }

@@ -25,7 +25,12 @@ public class SystemController {
     }
     
     public boolean login(String username, String password) {
-        return this.library.login(username, password);
+    	User tempUser = this.library.login(username, password);
+    	if(tempUser != null){
+    		this.setCurrentUser(tempUser);
+    		return true;
+    	}
+        return false;
     }
 
     /**

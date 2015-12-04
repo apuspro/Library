@@ -52,6 +52,6 @@ public class Librarian extends User {
     
     @Override
 	public String toString(){
-		return "Librarian ->"+this.getUsername()+" "+this.getPassword();
+		return String.format("|%15s|","Librarian")+String.format("%15s|",this.getUsername())+String.format("%15s|\n",this.getPassword());
 	}
 }

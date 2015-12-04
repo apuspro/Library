@@ -57,12 +57,12 @@ public class Library implements Serializable {
         return null;
     }
 
-    public boolean login(String username, String password) {
+    public User login(String username, String password) {
         User user = getUser(username);
         if (user != null && user.getPassword().equals(password)) {
-            return true;
+            return user;
         }
-        return false;
+        return null;
     }
 
     public void addMember(Member newMember) throws LibraryException {
@@ -111,22 +111,42 @@ public class Library implements Serializable {
 	
 	public void printUsers(){
 		System.out.println("--List of Users--");
+		System.out.println("---------------------------------------------------------------------------------------");
+        System.out.printf("|%15s|", "Type");
+        System.out.printf("%15s|", "username");
+        System.out.printf("%15s|\n", "password");
+        System.out.println("---------------------------------------------------------------------------------------");
 		for (User user : this.getUsers()) {
-			System.out.println(user.toString());
+			System.out.print(user.toString());
+			System.out.println("---------------------------------------------------------------------------------------");
 		}
 	}
 	
 	public void printBooks(){
 		System.out.println("--List of Books--");
+		System.out.println("---------------------------------------------------------------------------------------");
+        System.out.printf("|%15s|", "ISBN");
+        System.out.printf("%15s|", "Title");
+        System.out.printf("%15s|", "CheckOutLenght");
+        System.out.printf("%15s|", "Author");
+        System.out.printf("%15s|\n", "#Copies");
+        System.out.println("---------------------------------------------------------------------------------------");
 		for (Book book : this.getBooks()) {
-			System.out.println(book.toString());
+			System.out.print(book.toString());
+			System.out.println("---------------------------------------------------------------------------------------");
 		}
 	}
 	
 	public void printMembers(){
 		System.out.println("--List of Members--");
+		System.out.println("---------------------------------------------------------------------------------------");
+        System.out.printf("|%15s|", "Member ID");
+        System.out.printf("%15s|", "FirstName");
+        System.out.printf("%15s|\n", "LastName");
+        System.out.println("---------------------------------------------------------------------------------------");
 		for (Member member : this.getMembers()) {
-			System.out.println(member.toString());
+			System.out.print(member.toString());
+			System.out.println("---------------------------------------------------------------------------------------");
 		}
 	}
 

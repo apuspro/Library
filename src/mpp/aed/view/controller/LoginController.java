@@ -22,7 +22,6 @@ import mpp.aed.view.rulsets.RuleSetFactory;
 
 public class LoginController {
 	
-	private SystemController sController;
 	private Stage primaryStage;
 
 	@FXML
@@ -32,11 +31,6 @@ public class LoginController {
 	@FXML
 	private Text resultMsg;
 	
-	@FXML
-    protected void initialize(){
-		sController =  SystemController.getInstance();
-    }
-
 	@FXML
 	private void handleLoginBtn() {
 		
@@ -48,11 +42,12 @@ public class LoginController {
 			String username = usernameField.getText();
 			String password = passwordField.getText();
 	
+			SystemController sController = SystemController.getInstance();
 			if (sController.login(username, password)) {
 				//TODO Call the next Window
 				resultMsg.setFill(Color.GREEN);
-				resultMsg.setText("Login Successfully!");
-				sController.setCurrentUser(sController.getUser(username));
+				resultMsg.setText("Successful Login!");
+				
 				openMenu();
 			} else {
 				resultMsg.setFill(Color.RED);

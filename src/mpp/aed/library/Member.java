@@ -104,6 +104,6 @@ public class Member implements Serializable {
 	}
 	
 	public String toString(){
-		return "MemberId: "+memberId+" Name:"+firstName+" "+lastName;
+		return String.format("|%15s|",memberId+"")+String.format("%15s|",this.firstName)+String.format("%15s|\n",this.lastName);
 	}
 }

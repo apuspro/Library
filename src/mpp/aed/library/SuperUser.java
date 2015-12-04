@@ -25,6 +25,6 @@ public class SuperUser extends User {
     
     @Override
 	public String toString(){
-		return "Super User ->"+this.getUsername()+" "+this.getPassword();
+		return String.format("|%15s|","Super User")+String.format("%15s|",this.getUsername())+String.format("%15s|\n",this.getPassword());
 	}
 }
