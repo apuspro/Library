@@ -110,6 +110,8 @@ public final class Book implements Serializable {
 	
 	@Override
 	public String toString(){
-		return String.format("|%15s|",ISBN+"")+String.format("%15s|",this.title)+String.format("%15s|",this.maxCheckoutDays)+String.format("%15s|\n",this.copyNumber);
+		return String.format("|%12s|",ISBN+"")+String.format("%30s|",this.title)+
+				String.format("%15s|",this.maxCheckoutDays)+ String.format("%25s|",this.authors.get(0).toString())+
+				String.format("%9s|\n",this.copyNumber);
 	}
 }

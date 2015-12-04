@@ -54,6 +54,7 @@ public class UserController {
 			resultMsg.setFill(Color.GREEN);
 			resultMsg.setText("User "+usernameField.getText()+" created");
 			System.out.println("User "+usernameField.getText()+" created");
+			cleanFields();
 		}catch(RuleException e) {
 			resultMsg.setFill(Color.RED);
 			resultMsg.setText(e.getMessage());
@@ -84,6 +85,12 @@ public class UserController {
 
 	public ComboBox<String> getComboBox() {
 		return comboBox;
+	}
+	
+	private void cleanFields(){
+		this.usernameField.setText("");
+		this.passwordField.setText("");
+		this.comboBox.getSelectionModel().clearSelection();
 	}
 	
 }

@@ -45,7 +45,7 @@ final public class BookRuleSet implements RuleSet {
 				throw new RuleException("ISBN must be numeric");
 			}
 			if(aISBN.length()!=10){
-				throw new RuleException("ISBN should have at lenght of 10 digits");
+				throw new RuleException("ISBN should have a lenght of 10 digits");
 			}
 		}
 	}

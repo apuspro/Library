@@ -152,25 +152,27 @@ public class BookController {
 		try{
 			resultMsg.setText("");
 			((BookRuleSet)bookRules).applyRulesSearch(this);
-			Book tempBook = new Book(Long.parseLong(ISBNField.getText()));
-			int index = SystemController.getInstance().getLibrary().getBooks().lastIndexOf(tempBook);
-			tempBook = SystemController.getInstance().getLibrary().getBooks().get(index);
 			
-			ISBNField.setEditable(false);
-			ISBNField.setText(tempBook.getISBN()+"");
-			titleField.setText(tempBook.getTitle());
-			if(tempBook.getMaxCheckoutDays()==7){
-				maxChecOutLengthField.getSelectionModel().select(0);
+			Book tempBook = SystemController.getInstance().getLibrary().getBookByISBN(Long.parseLong(ISBNField.getText()));
+			if(tempBook==null){
+				throw new RuleException("A book with ISBN: "+ISBNField.getText()+" doesn't exists");
 			}else{
-				maxChecOutLengthField.getSelectionModel().select(1);
+				ISBNField.setEditable(false);
+				ISBNField.setText(tempBook.getISBN()+"");
+				titleField.setText(tempBook.getTitle());
+				if(tempBook.getMaxCheckoutDays()==7){
+					maxChecOutLengthField.getSelectionModel().select(0);
+				}else{
+					maxChecOutLengthField.getSelectionModel().select(1);
+				}
+				numberOfCopiesField.setEditable(false);
+				numberOfCopiesField.setText(tempBook.getNumberOfCopies()+"");
+				
+				this.newBook = tempBook;
+				resultMsg.setFill(Color.BLUE);
+				resultMsg.setText("Edit Mode");
+				editMode = true;
 			}
-			numberOfCopiesField.setEditable(false);
-			numberOfCopiesField.setText(tempBook.getNumberOfCopies()+"");
-			
-			this.newBook = tempBook;
-			resultMsg.setFill(Color.BLUE);
-			resultMsg.setText("Edit Mode");
-			editMode = true;
 		}catch(RuleException e) {
 			resultMsg.setFill(Color.RED);
 			resultMsg.setText(e.getMessage());

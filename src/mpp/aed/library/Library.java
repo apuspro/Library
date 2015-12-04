@@ -125,11 +125,11 @@ public class Library implements Serializable {
 	public void printBooks(){
 		System.out.println("--List of Books--");
 		System.out.println("---------------------------------------------------------------------------------------");
-        System.out.printf("|%15s|", "ISBN");
-        System.out.printf("%15s|", "Title");
+        System.out.printf("|%12s|", "ISBN");
+        System.out.printf("%30s|", "Title");
         System.out.printf("%15s|", "CheckOutLenght");
-        System.out.printf("%15s|", "Author");
-        System.out.printf("%15s|\n", "#Copies");
+        System.out.printf("%25s|", "Author");
+        System.out.printf("%9s|\n", "#Copies");
         System.out.println("---------------------------------------------------------------------------------------");
 		for (Book book : this.getBooks()) {
 			System.out.print(book.toString());
